@@ -1,7 +1,32 @@
-:root {
-  // * global
-  & {
-    --global-bg-color: #fff;
-    --global-font-size: 14px;
-  }
+.default-theme {
+  // 默认主题变量
+  --styled-control-bg-color: #ffffff;
+  --styled-control-border-color: #dddddd;
+  --styled-control-text-color: #4e5969;
+  --styled-control-hover-bg-color: #f5f5f5;
+  --styled-control-active-bg-color: #eeeeee;
+  --styled-control-disabled-opacity: 0.5;
+  --styled-control-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// 深色主题变量
+.dark-theme {
+  --styled-control-bg-color: #2d2d2d;
+  --styled-control-border-color: #444444;
+  --styled-control-text-color: #ffffff;
+  --styled-control-hover-bg-color: #3d3d3d;
+  --styled-control-active-bg-color: #1d1d1d;
+  --styled-control-disabled-opacity: 0.4;
+  --styled-control-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+// 蓝色主题变量
+.blue-theme {
+  --styled-control-bg-color: #e3f2fd;
+  --styled-control-border-color: #bbdefb;
+  --styled-control-text-color: #1976d2;
+  --styled-control-hover-bg-color: #bbdefb;
+  --styled-control-active-bg-color: #90caf9;
+  --styled-control-disabled-opacity: 0.5;
+  --styled-control-box-shadow: 0 2px 4px rgba(25, 118, 210, 0.2);
 }

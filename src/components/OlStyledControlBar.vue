@@ -1,5 +1,5 @@
 <template>
-  <div ref="controlBar" :class="['ol-styled-control-bar', positionClass]">
+  <div ref="controlBar" :class="containerClasses">
     <slot />
   </div>
 </template>
@@ -10,10 +10,12 @@ import { computed, ref, onMounted } from 'vue'
 // 定义组件属性
 interface Props {
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  theme?: 'default' | 'dark' | 'blue'
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  position: 'bottom-right'
+  position: 'bottom-right',
+  theme: 'default'
 })
 
 // 定义事件发射器
@@ -24,7 +26,27 @@ const controlBar = ref(null)
 
 // 计算位置类名
 const positionClass = computed(() => {
-  return `ol-styled-control-bar--${props.position.replace('_', '-')}`
+  const positions = {
+    'top-left': 'top-left-position',
+    'top-right': 'top-right-position',
+    'bottom-left': 'bottom-left-position',
+    'bottom-right': 'bottom-right-position'
+  }
+  return positions[props.position] || 'bottom-right-position'
+})
+
+// 计算主题类名
+const themeClass = computed(() => {
+  return `${props.theme}-theme`
+})
+
+// 计算容器类名
+const containerClasses = computed(() => {
+  return [
+    'ol-styled-control-bar',
+    positionClass.value,
+    themeClass.value
+  ].filter(Boolean)
 })
 
 // 组件挂载后发射事件
@@ -40,42 +62,67 @@ defineExpose({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/style/var.scss';
 .ol-styled-control-bar {
   position: absolute;
+  border-radius: 2px;
+  padding: 4px 6px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   z-index: 1000;
   pointer-events: none;
-}
+  background-color: var(--styled-control-bg-color, rgba(255, 255, 255, 0.8));
+  color: var(--styled-control-text-color, #333);
+  box-shadow: var(
+    --styled-control-box-shadow,
+    0px 2px 4px 0px rgba(148, 149, 151, 0.5)
+  );
 
-.ol-styled-control-bar > * {
-  pointer-events: auto;
-}
+  & > * {
+    pointer-events: auto;
+  }
 
-/* 位置样式 */
-.ol-styled-control-bar--top-left {
-  top: 10px;
-  left: 10px;
-}
+  /* 位置样式 */
+  &.top-left-position {
+    top: 10px;
+    left: 10px;
+    flex-direction: row;
+  }
 
-.ol-styled-control-bar--top-right {
-  top: 10px;
-  right: 10px;
-}
+  &.top-right-position {
+    top: 10px;
+    right: 12px;
+    flex-direction: row;
+  }
 
-.ol-styled-control-bar--bottom-left {
-  bottom: 10px;
-  left: 10px;
-}
+  &.bottom-right-position {
+    bottom: 9px;
+    right: 12px;
+  }
 
-.ol-styled-control-bar--bottom-right {
-  bottom: 10px;
-  right: 10px;
-}
+  &.bottom-left-position {
+    bottom: 9px;
+    left: 10px;
+  }
 
-/* 垂直方向的控件间距 */
-.ol-styled-control-bar > *:not(:first-child) {
-  margin-top: 5px;
+  // 使用深度选择器穿透scoped样式，影响slot中的子组件
+  :deep(.ol-styled-control-item) {
+    width: 24px;
+    height: 24px;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--styled-control-hover-bg-color, #f5f5f5);
+    }
+    &.active {
+      background-color: var(--styled-control-active-bg-color, #f5f5f5);
+    }
+  }
 }
 </style>

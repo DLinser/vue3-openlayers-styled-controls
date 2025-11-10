@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import '@/assets/style/index.scss'
+import '@/assets/style/demos.scss'
 import OpenLayersMap from 'vue3-openlayers'
 import 'vue3-openlayers/styles.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'

@@ -10,7 +10,6 @@ export default [
   js.configs.recommended,
   prettierConfig,
   {
-    files: ['**/*.{js,mjs,cjs,ts,vue}'],
     ignores: [
       'vite.config.ts',
       'eslint.config.js',
@@ -33,7 +32,10 @@ export default [
       'package-lock.json',
       'yarn.lock',
       'pnpm-lock.yaml'
-    ],
+    ]
+  },
+  {
+    files: ['**/*.{js,mjs,cjs,ts,vue}'],
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: 'module',

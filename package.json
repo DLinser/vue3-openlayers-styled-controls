@@ -1,5 +1,9 @@
 {
   "name": "vue3-openlayers-styled-controls",
+  "keywords": [
+    "openlayers",
+    "vue3-openlayers"
+  ],
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/vue3-openlayers-styled-controls.umd.cjs",
@@ -7,9 +11,9 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue3-openlayers-styled-controls.js",
-      "require": "./dist/vue3-openlayers-styled-controls.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/vue3-openlayers-styled-controls.umd.cjs"
     },
     "./styles.css": {
       "import": "./dist/styles.css",

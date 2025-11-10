@@ -25,6 +25,21 @@ const routes: RouteRecordRaw[] = [
         path: 'zoom-control',
         name: 'zoom-control',
         component: () => import('../demos/views/ZoomControl.vue')
+      },
+      {
+        path: 'full-screen-control',
+        name: 'full-screen-control',
+        component: () => import('../demos/views/FullScreenControl.vue')
+      },
+      {
+        path: 'measure-control',
+        name: 'measure-control',
+        component: () => import('../demos/views/MeasureControl.vue')
+      },
+      {
+        path: 'themed-controls',
+        name: 'themed-controls',
+        component: () => import('../demos/views/ThemedControls.vue')
       }
     ]
   }

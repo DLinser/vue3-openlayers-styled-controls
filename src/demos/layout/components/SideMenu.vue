@@ -25,6 +25,22 @@
         <el-icon><Tools /></el-icon>
         <span>缩放控制组件</span>
       </el-menu-item>
+      <el-menu-item index="/demos/full-screen-control">
+        <el-icon><MagicStick /></el-icon>
+        <span>全屏控制组件</span>
+      </el-menu-item>
+      <el-menu-item index="/demos/measure-length-control">
+        <el-icon><MagicStick /></el-icon>
+        <span>距离量算组件</span>
+      </el-menu-item>
+      <el-menu-item index="/demos/measure-control">
+        <el-icon><MagicStick /></el-icon>
+        <span>量算组件</span>
+      </el-menu-item>
+      <el-menu-item index="/demos/themed-controls">
+        <el-icon><MagicStick /></el-icon>
+        <span>主题化控件</span>
+      </el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -32,7 +48,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { House, Location, Tools } from '@element-plus/icons-vue'
+import { House, Location, Tools, MagicStick } from '@element-plus/icons-vue'
 
 const route = useRoute()
 
@@ -45,13 +61,5 @@ const activeMenu = computed(() => {
 .side-menu {
   border-right: none;
   height: calc(100vh - 80px);
-}
-
-.side-menu .el-menu-item:hover {
-  background-color: #263445 !important;
-}
-
-.side-menu .el-menu-item.is-active {
-  background-color: #1890ff !important;
 }
 </style>

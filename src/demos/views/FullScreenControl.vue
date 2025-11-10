@@ -11,6 +11,7 @@
     <OlStyledControlBar>
       <OlStyledZoomInControl />
       <OlStyledZoomOutControl />
+      <OlStyledFullScreenControl />
     </OlStyledControlBar>
   </ol-map>
 </template>
