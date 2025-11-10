@@ -1,10 +1,14 @@
 <template>
   <div
-    :title="isActive ? '停止测量' : '测量距离'"
-    :class="['ol-styled-control-item', 'measure-control', { active: isActive }]"
+    :title="controlState.measureLengthActive ? '停止测量' : '测量距离'"
+    :class="[
+      'ol-styled-control-item',
+      'measure-control',
+      { active: controlState.measureLengthActive }
+    ]"
     @click="handleClick"
   >
-    <template v-if="isActive">
+    <template v-if="controlState.measureLengthActive">
       <ol-overlay
         v-for="(tooltipCoordItem, tooltipCoordIndex) in tooltipCoordHistory"
         :key="'tooltipCoordIndex' + tooltipCoordIndex"
@@ -77,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, onUnmounted, onMounted } from 'vue'
+import { inject, ref, onUnmounted, onMounted, watch } from 'vue'
 import type Map from 'ol/Map'
 import type { Feature, MapBrowserEvent } from 'ol'
 import { LineString } from 'ol/geom'
@@ -86,15 +90,18 @@ import type { EventsKey } from 'ol/events'
 import type { Coordinate } from 'ol/coordinate'
 import { getLength } from 'ol/sphere'
 import { unByKey } from 'ol/Observable'
+import useControl from '@/composables/useControl'
 
 // 定义事件发射器
 const emit = defineEmits(['click', 'measure-start', 'measure-end'])
 
 // 从父组件注入地图实例
 const map = inject<Map>('map')
-const isActive = ref(false)
 const drawType = ref('LineString')
 const sketch = ref<Feature | null>(null)
+
+// 使用组合函数
+const { controlState } = useControl()
 
 const tooltipCoord = ref<Coordinate | null>(null)
 const tooltipCoordHistory = ref<Coordinate[]>([])
@@ -170,7 +177,7 @@ const handleClick = (event: unknown) => {
   emit('click', event)
 
   if (map) {
-    if (!isActive.value) {
+    if (!controlState.value.measureLengthActive) {
       startMeasuring()
     } else {
       stopMeasuring()
@@ -184,7 +191,7 @@ const handleClick = (event: unknown) => {
  * @description: 开始测量
  */
 const startMeasuring = () => {
-  isActive.value = true
+  controlState.value.measureLengthActive = true
   if (map) {
     pointerMoveListener = map!.on(
       'pointermove' as any,
@@ -193,14 +200,27 @@ const startMeasuring = () => {
   }
 }
 
+const clearMeasuring = () => {
+  tooltipCoordHistory.value = []
+  tooltipTextHistory.value = []
+  unByKey(pointerMoveListener)
+}
+
 /**
  * @description: 停止测量
  */
 const stopMeasuring = () => {
-  isActive.value = false
-  tooltipCoordHistory.value = []
-  unByKey(pointerMoveListener)
+  controlState.value.measureLengthActive = false
 }
+
+watch(
+  () => controlState.value.measureLengthActive,
+  newValue => {
+    if (!newValue) {
+      clearMeasuring()
+    }
+  }
+)
 
 onMounted(() => {})
 
@@ -209,7 +229,6 @@ onUnmounted(() => {})
 
 // 暴露给外部的属性和方法
 defineExpose({
-  isActive,
   startMeasuring,
   stopMeasuring
 })

@@ -13,6 +13,7 @@
       <OlStyledZoomOutControl />
       <OlStyledMeasureLengthControl />
       <OlStyledMeasureAreaControl />
+      <OlStyledClearControl />
     </OlStyledControlBar>
   </ol-map>
 </template>

@@ -8,6 +8,7 @@ import OlStyledControlBar from './components/OlStyledControlBar.vue'
 import OlStyledFullScreenControl from './components/OlStyledFullScreenControl.vue'
 import OlStyledMeasureLengthControl from './components/OlStyledMeasureLengthControl.vue'
 import OlStyledMeasureAreaControl from './components/OlStyledMeasureAreaControl.vue'
+import OlStyledClearControl from './components/OlStyledClearControl.vue'
 
 // 导出组件
 export {
@@ -16,7 +17,8 @@ export {
   OlStyledControlBar,
   OlStyledFullScreenControl,
   OlStyledMeasureLengthControl,
-  OlStyledMeasureAreaControl
+  OlStyledMeasureAreaControl,
+  OlStyledClearControl
 }
 // 导出默认安装函数
 export default {
@@ -27,5 +29,6 @@ export default {
     app.component('OlStyledFullScreenControl', OlStyledFullScreenControl)
     app.component('OlStyledMeasureLengthControl', OlStyledMeasureLengthControl)
     app.component('OlStyledMeasureAreaControl', OlStyledMeasureAreaControl)
+    app.component('OlStyledClearControl', OlStyledClearControl)
   }
 }

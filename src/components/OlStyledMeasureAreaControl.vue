@@ -1,10 +1,10 @@
 <template>
   <div
-    :title="isActive ? '停止测量' : '测量面积'"
+    :title="controlState.measureAreaActive ? '停止测量' : '测量面积'"
     :class="[
       'ol-styled-control-item',
       'measure-area-control',
-      { active: isActive }
+      { active: controlState.measureAreaActive }
     ]"
     @click="handleClick"
   >
@@ -27,7 +27,7 @@
         />
       </svg>
     </slot>
-    <template v-if="isActive">
+    <template v-if="controlState.measureAreaActive">
       <ol-overlay
         v-for="(tooltipCoordItem, tooltipCoordIndex) in tooltipCoordHistory"
         :key="'tooltipCoordIndex' + tooltipCoordIndex"
@@ -87,7 +87,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, onUnmounted } from 'vue'
+import { inject, ref, onUnmounted, watch } from 'vue'
 import type Map from 'ol/Map'
 import type { Feature, MapBrowserEvent } from 'ol'
 import { Polygon } from 'ol/geom'
@@ -97,13 +97,16 @@ import type { Coordinate } from 'ol/coordinate'
 import { getArea } from 'ol/sphere'
 import { unByKey } from 'ol/Observable'
 import { getCenter } from 'ol/extent'
+import useControl from '@/composables/useControl'
+
+// 使用组合函数
+const { controlState } = useControl()
 
 // 定义事件发射器
 const emit = defineEmits(['click', 'measure-start', 'measure-end'])
 
 // 从父组件注入地图实例
 const map = inject<Map>('map')
-const isActive = ref(false)
 const drawType = ref('Polygon')
 const sketch = ref<Feature | null>(null)
 
@@ -187,7 +190,7 @@ const handleClick = (event: unknown) => {
   emit('click', event)
 
   if (map) {
-    if (!isActive.value) {
+    if (!controlState.value.measureAreaActive) {
       startMeasuring()
     } else {
       stopMeasuring()
@@ -198,10 +201,19 @@ const handleClick = (event: unknown) => {
 }
 
 /**
+ * @description: 清理测量数据
+ */
+const clearMeasuring = () => {
+  tooltipCoordHistory.value = []
+  tooltipTextHistory.value = []
+  unByKey(pointerMoveListener)
+}
+
+/**
  * @description: 开始测量
  */
 const startMeasuring = () => {
-  isActive.value = true
+  controlState.value.measureAreaActive = true
   if (map) {
     pointerMoveListener = map!.on(
       'pointermove' as any,
@@ -215,18 +227,23 @@ const startMeasuring = () => {
  * @description: 停止测量
  */
 const stopMeasuring = () => {
-  isActive.value = false
-  tooltipCoordHistory.value = []
-  tooltipTextHistory.value = []
-  unByKey(pointerMoveListener)
+  controlState.value.measureAreaActive = false
 }
+
+watch(
+  () => controlState.value.measureAreaActive,
+  active => {
+    if (!active) {
+      clearMeasuring()
+    }
+  }
+)
 
 // 组件卸载时清理资源
 onUnmounted(() => {})
 
 // 暴露给外部的属性和方法
 defineExpose({
-  isActive,
   startMeasuring,
   stopMeasuring
 })
