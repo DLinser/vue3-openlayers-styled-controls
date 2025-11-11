@@ -1,0 +1,14 @@
+node_modules
+dist
+docs
+.build
+coverage
+*.min.js
+*.min.css
+*.map
+.env
+.env.*
+!.env.example
+README.md
+LICENSE
+CHANGELOG.md
