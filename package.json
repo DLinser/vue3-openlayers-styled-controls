@@ -5,7 +5,17 @@
     "vue3-openlayers"
   ],
   "version": "0.0.0",
+  "description": "Styled controls for Vue3 OpenLayers",
   "type": "module",
+  "author": "DLinser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DLinser/vue3-openlayers-styled-controls.git"
+  },
+  "homepage": "https://github.com/DLinser/vue3-openlayers-styled-controls",
+  "bugs": {
+    "url": "https://github.com/DLinser/vue3-openlayers-styled-controls/issues"
+  },
   "main": "./dist/vue3-openlayers-styled-controls.umd.cjs",
   "module": "./dist/vue3-openlayers-styled-controls.js",
   "types": "./dist/index.d.ts",
