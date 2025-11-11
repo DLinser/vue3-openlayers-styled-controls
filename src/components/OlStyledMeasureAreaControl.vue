@@ -251,7 +251,7 @@ defineExpose({
 
 <style scoped>
 .measure-area-control.active {
-  background-color: var(--styled-control-active-bg-color, #eeeeee);
+  background-color: var(--styled-control-item-active-bg-color, #eeeeee);
 }
 </style>
 

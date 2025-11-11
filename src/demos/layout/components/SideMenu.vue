@@ -15,26 +15,22 @@
     <el-sub-menu index="openlayers">
       <template #title>
         <el-icon><Location /></el-icon>
-        <span>OpenLayers 组件</span>
+        <span>Control 组件</span>
       </template>
-      <el-menu-item index="/demos/openlayers-tools">
-        <el-icon><Tools /></el-icon>
-        <span>地图工具</span>
+      <el-menu-item index="/demos/control-bar">
+        <el-icon><MessageBox /></el-icon>
+        <span>工具条</span>
       </el-menu-item>
       <el-menu-item index="/demos/zoom-control">
-        <el-icon><Tools /></el-icon>
+        <el-icon><ZoomIn /></el-icon>
         <span>缩放控制组件</span>
       </el-menu-item>
       <el-menu-item index="/demos/full-screen-control">
-        <el-icon><MagicStick /></el-icon>
+        <el-icon><FullScreen /></el-icon>
         <span>全屏控制组件</span>
       </el-menu-item>
-      <el-menu-item index="/demos/measure-length-control">
-        <el-icon><MagicStick /></el-icon>
-        <span>距离量算组件</span>
-      </el-menu-item>
       <el-menu-item index="/demos/measure-control">
-        <el-icon><MagicStick /></el-icon>
+        <el-icon><TrendCharts /></el-icon>
         <span>量算组件</span>
       </el-menu-item>
       <el-menu-item index="/demos/themed-controls">
@@ -48,7 +44,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { House, Location, Tools, MagicStick } from '@element-plus/icons-vue'
+import {
+  House,
+  Location,
+  MessageBox,
+  ZoomIn,
+  FullScreen,
+  TrendCharts,
+  MagicStick
+} from '@element-plus/icons-vue'
 
 const route = useRoute()
 

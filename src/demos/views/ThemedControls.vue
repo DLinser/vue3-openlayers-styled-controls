@@ -1,15 +1,19 @@
 <template>
   <div class="themed-controls-demo">
-    <h2>主题化控件演示</h2>
     <div class="theme-selector">
-      <label>选择主题:</label>
-      <select v-model="selectedTheme" @change="applyTheme">
-        <option value="default">默认主题</option>
-        <option value="dark">深色主题</option>
-        <option value="blue">蓝色主题</option>
-      </select>
+      <el-select
+        v-model="selectedTheme"
+        placeholder="请选择主题"
+        style="width: 240px"
+      >
+        <el-option
+          v-for="item in themeOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
     </div>
-
     <ol-map class="map-conterner">
       <ol-view
         ref="view"
@@ -22,23 +26,35 @@
 
       <!-- 不同主题的控件条示例 -->
       <OlStyledControlBar :theme="selectedTheme" position="top-left">
-        <OlStyledZoomInControl :theme="selectedTheme" />
-        <OlStyledZoomOutControl :theme="selectedTheme" />
+        <OlStyledZoomInControl />
+        <OlStyledZoomOutControl />
+        <OlStyledMeasureLengthControl />
+        <OlStyledMeasureAreaControl />
+        <OlStyledClearControl />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="top-right">
-        <OlStyledZoomInControl :theme="selectedTheme" />
-        <OlStyledZoomOutControl :theme="selectedTheme" />
+        <OlStyledZoomInControl />
+        <OlStyledZoomOutControl />
+        <OlStyledMeasureLengthControl />
+        <OlStyledMeasureAreaControl />
+        <OlStyledClearControl />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="bottom-left">
-        <OlStyledZoomInControl :theme="selectedTheme" />
-        <OlStyledZoomOutControl :theme="selectedTheme" />
+        <OlStyledZoomInControl />
+        <OlStyledZoomOutControl />
+        <OlStyledMeasureLengthControl />
+        <OlStyledMeasureAreaControl />
+        <OlStyledClearControl />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="bottom-right">
-        <OlStyledZoomInControl :theme="selectedTheme" />
-        <OlStyledZoomOutControl :theme="selectedTheme" />
+        <OlStyledZoomInControl />
+        <OlStyledZoomOutControl />
+        <OlStyledMeasureLengthControl />
+        <OlStyledMeasureAreaControl />
+        <OlStyledClearControl />
       </OlStyledControlBar>
     </ol-map>
   </div>
@@ -52,34 +68,40 @@ const center = ref([120, 40])
 const projection = ref('EPSG:4326')
 const zoom = ref(8)
 const selectedTheme = ref('default')
-
-const applyTheme = () => {
-  // 可以在这里添加额外的主题应用逻辑
-  console.log('应用主题:', selectedTheme.value)
-}
+const themeOptions = [
+  {
+    value: 'default',
+    label: '默认'
+  },
+  {
+    value: 'dark',
+    label: '暗色'
+  },
+  {
+    value: 'ocean',
+    label: '蓝色'
+  },
+  {
+    value: 'glassmorphism',
+    label: '毛玻璃'
+  }
+]
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .themed-controls-demo {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
 .theme-selector {
-  padding: 10px;
-  background-color: var(--control-bg-color);
-  border: 1px solid var(--control-border-color);
-  margin: 10px;
-  border-radius: 4px;
-}
-
-.theme-selector label {
-  margin-right: 10px;
-  color: var(--control-text-color);
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 120px);
+  z-index: 1000;
 }
 
 .map-conterner {
-  flex: 1;
+  height: 100%;
 }
 </style>

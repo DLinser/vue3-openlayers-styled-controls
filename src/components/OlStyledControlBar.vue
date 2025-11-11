@@ -10,7 +10,7 @@ import { computed, ref, onMounted } from 'vue'
 // 定义组件属性
 interface Props {
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
-  theme?: 'default' | 'dark' | 'blue'
+  theme?: 'default' | 'dark' | 'ocean' | 'glassmorphism'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -73,10 +73,13 @@ defineExpose({
   gap: 10px;
   z-index: 1000;
   pointer-events: none;
-  background-color: var(--styled-control-bg-color, rgba(255, 255, 255, 0.8));
+  background-color: var(
+    --styled-control-bar-bg-color,
+    rgba(255, 255, 255, 0.8)
+  );
   color: var(--styled-control-text-color, #333);
   box-shadow: var(
-    --styled-control-box-shadow,
+    --styled-control-bar-box-shadow,
     0px 2px 4px 0px rgba(148, 149, 151, 0.5)
   );
 
@@ -116,12 +119,23 @@ defineExpose({
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--styled-control-item-bg-color, transparent);
+    border: 1px solid var(--styled-control-item-border-color, transparent);
+    border-radius: 4px;
 
     &:hover {
-      background-color: var(--styled-control-hover-bg-color, #f5f5f5);
+      background-color: var(--styled-control-item-hover-bg-color, #f5f5f5);
+      box-shadow: var(
+        --styled-control-item-hover-box-shadow,
+        0px 2px 4px 0px rgba(148, 149, 151, 0.5)
+      );
     }
     &.active {
-      background-color: var(--styled-control-active-bg-color, #f5f5f5);
+      background-color: var(--styled-control-item-active-bg-color, #f5f5f5);
+      box-shadow: var(
+        --styled-control-item-hover-box-shadow,
+        0px 2px 4px 0px rgba(148, 149, 151, 0.5)
+      );
     }
   }
 }

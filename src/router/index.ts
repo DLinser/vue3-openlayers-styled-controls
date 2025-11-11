@@ -17,9 +17,9 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../demos/views/Home.vue')
       },
       {
-        path: 'openlayers-tools',
-        name: 'openlayers-tools',
-        component: () => import('../demos/views/OpenLayersTools.vue')
+        path: 'control-bar',
+        name: 'control-bar',
+        component: () => import('../demos/views/ControlBar.vue')
       },
       {
         path: 'zoom-control',
