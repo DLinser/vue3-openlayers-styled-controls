@@ -15,6 +15,7 @@ export default [
       'eslint.config.js',
       'node_modules/**',
       'dist/**',
+      'docs/**',
       'build/**',
       '*.config.js',
       '*.config.ts',

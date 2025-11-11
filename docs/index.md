@@ -1,0 +1,30 @@
+---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "Vue3 OpenLayers Styled Controls"
+  text: "可定制样式的地图控件库"
+  tagline: 一套基于 Vue 3 和 OpenLayers 的现代化地图控件组件库
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /guide/getting-started
+    - theme: alt
+      text: 组件总览
+      link: /components/
+
+features:
+  - title: 🎨 可定制样式
+    details: 支持多种主题和样式定制，轻松适配您的项目设计
+  - title: 🌍 国际化支持
+    details: 内置多语言支持，可轻松扩展更多语言
+  - title: 🧩 组件化设计
+    details: 基于 Vue 3 Composition API，组件独立可复用
+  - title: 📱 响应式布局
+    details: 适配不同屏幕尺寸，提供良好的移动端体验
+  - title: 🛠️ 易于集成
+    details: 简单的 API 设计，快速集成到现有项目中
+  - title: 📦 轻量级
+    details: 专注于核心功能，保持组件库轻量高效
+---
