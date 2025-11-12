@@ -9,6 +9,8 @@ import OlStyledFullScreenControl from './components/OlStyledFullScreenControl.vu
 import OlStyledMeasureLengthControl from './components/OlStyledMeasureLengthControl.vue'
 import OlStyledMeasureAreaControl from './components/OlStyledMeasureAreaControl.vue'
 import OlStyledClearControl from './components/OlStyledClearControl.vue'
+import OlStyledSwipeControl from './components/OlStyledSwipeControl.vue'
+import OlStyledBaseLayerSwitcher from './components/OlStyledBaseLayerSwitcher.vue'
 
 // 导出组件
 export {
@@ -18,8 +20,11 @@ export {
   OlStyledFullScreenControl,
   OlStyledMeasureLengthControl,
   OlStyledMeasureAreaControl,
-  OlStyledClearControl
+  OlStyledClearControl,
+  OlStyledSwipeControl,
+  OlStyledBaseLayerSwitcher
 }
+
 // 导出默认安装函数
 export default {
   install(app: App) {
@@ -30,5 +35,7 @@ export default {
     app.component('OlStyledMeasureLengthControl', OlStyledMeasureLengthControl)
     app.component('OlStyledMeasureAreaControl', OlStyledMeasureAreaControl)
     app.component('OlStyledClearControl', OlStyledClearControl)
+    app.component('OlStyledSwipeControl', OlStyledSwipeControl)
+    app.component('OlStyledBaseLayerSwitcher', OlStyledBaseLayerSwitcher)
   }
 }

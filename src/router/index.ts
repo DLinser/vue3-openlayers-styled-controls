@@ -40,6 +40,16 @@ const routes: RouteRecordRaw[] = [
         path: 'themed-controls',
         name: 'themed-controls',
         component: () => import('../demos/views/ThemedControls.vue')
+      },
+      {
+        path: 'swipe-control',
+        name: 'swipe-control',
+        component: () => import('../demos/views/SwipeControl.vue')
+      },
+      {
+        path: 'base-layer-switcher',
+        name: 'base-layer-switcher',
+        component: () => import('../demos/views/BaseLayerSwitcher.vue')
       }
     ]
   }

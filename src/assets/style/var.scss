@@ -10,6 +10,7 @@
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #dddddd;
   --styled-control-item-active-bg-color: #eeeeee;
   --styled-control-disabled-opacity: 0.5;
+  --styled-control-base-layer-switch-bg-color: rgba(255, 255, 255, 0.8);
 }
 
 // 深色主题变量
@@ -24,6 +25,7 @@
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #444444;
   --styled-control-item-active-bg-color: #1d1d1d;
   --styled-control-disabled-opacity: 0.4;
+  --styled-control-base-layer-switch-bg-color: rgba(45, 45, 45, 0.8);
 }
 
 // 海洋蓝主题变量
@@ -38,6 +40,7 @@
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #0994ff;
   --styled-control-item-active-bg-color: #083a5a;
   --styled-control-disabled-opacity: 0.5;
+  --styled-control-base-layer-switch-bg-color: rgba(0, 25, 41, 0.8);
 }
 
 .glassmorphism-theme {
@@ -51,4 +54,5 @@
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px transparent;
   --styled-control-item-active-bg-color: #33cccc1a;
   --styled-control-disabled-opacity: 0.5;
+  --styled-control-base-layer-switch-bg-color: #0009;
 }

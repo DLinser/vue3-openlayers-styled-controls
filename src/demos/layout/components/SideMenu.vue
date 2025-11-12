@@ -37,6 +37,14 @@
         <el-icon><MagicStick /></el-icon>
         <span>主题化控件</span>
       </el-menu-item>
+      <el-menu-item index="/demos/swipe-control">
+        <el-icon><CopyDocument /></el-icon>
+        <span>卷帘组件</span>
+      </el-menu-item>
+      <el-menu-item index="/demos/base-layer-switcher">
+        <el-icon><Collection /></el-icon>
+        <span>底图切换组件</span>
+      </el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -51,7 +59,9 @@ import {
   ZoomIn,
   FullScreen,
   TrendCharts,
-  MagicStick
+  MagicStick,
+  CopyDocument,
+  Collection
 } from '@element-plus/icons-vue'
 
 const route = useRoute()

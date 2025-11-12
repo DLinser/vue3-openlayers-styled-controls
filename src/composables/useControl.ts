@@ -9,6 +9,8 @@ type ExtentedMap = Map & {
 export interface ControlState {
   measureLengthActive: boolean
   measureAreaActive: boolean
+  swipeActive: boolean
+  baseLayerSwitcherActive: boolean
   sidebarCollapsed: boolean
   // 可以添加更多控件状态
 }
@@ -17,6 +19,8 @@ export interface ControlState {
 const controlState = ref<ControlState>({
   measureLengthActive: false,
   measureAreaActive: false,
+  swipeActive: false,
+  baseLayerSwitcherActive: false,
   sidebarCollapsed: false
 })
 
@@ -27,6 +31,8 @@ export default function useControl() {
   const closeAllControls = () => {
     controlState.value.measureLengthActive = false
     controlState.value.measureAreaActive = false
+    controlState.value.swipeActive = false
+    controlState.value.baseLayerSwitcherActive = false
   }
 
   return {
