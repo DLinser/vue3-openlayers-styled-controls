@@ -94,7 +94,9 @@ const controlRef = ref<HTMLElement | null>(null)
 const panelPosition = ref('bottom-right')
 
 // 获取底图图层组
-const baseLayers = computed(() => {
+let baseLayers: BaseLayer[] = []
+
+const getBaseLayers = () => {
   if (props.layerGroup && props.layerGroup instanceof LayerGroup) {
     return props.layerGroup.getLayers().getArray()
   }
@@ -112,9 +114,8 @@ const baseLayers = computed(() => {
       )
     })
   }
-
   return []
-})
+}
 
 /**
  * 获取图层标题
@@ -265,7 +266,8 @@ const baseLayersConfig = ref<LayerConfig[]>([])
  * @return {*}
  */
 const initBaseLayerPanel = () => {
-  baseLayersConfig.value = baseLayers.value.map(layer => {
+  baseLayers = getBaseLayers()
+  baseLayersConfig.value = baseLayers.map(layer => {
     return {
       title: getLayerTitle(layer),
       preview: getLayerPreview(layer),
@@ -309,7 +311,7 @@ const switchToLayer = (layerConfig: LayerConfig) => {
   baseLayersConfig.value.forEach(singleLayerConfig => {
     singleLayerConfig.active = singleLayerConfig.title === layerName
   })
-  baseLayers.value.forEach(layer => {
+  baseLayers.forEach(layer => {
     if (getLayerTitle(layer) === layerName) {
       layer.setVisible(true)
     } else {
