@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onUnmounted, watch, computed, ref } from 'vue'
+import { inject, onUnmounted, watch, ref } from 'vue'
 import type Map from 'ol/Map'
 import type BaseLayer from 'ol/layer/Base'
 import LayerGroup from 'ol/layer/Group'
