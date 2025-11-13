@@ -1,0 +1,20 @@
+import{_ as h,C as a,c,o as m,ae as n,j as e,a as d,G as o,w as s}from"./chunks/framework.DrlKiMjP.js";const P=JSON.parse('{"title":"组件总览","description":"","frontmatter":{},"headers":[],"relativePath":"components/index.md","filePath":"components/index.md"}'),i={name:"components/index.md"};function u(f,t,p,b,y,_){const l=a("ol-view"),r=a("ol-map");return m(),c("div",null,[t[2]||(t[2]=n('<h1 id="组件总览" tabindex="-1">组件总览 <a class="header-anchor" href="#组件总览" aria-label="Permalink to &quot;组件总览&quot;">​</a></h1><p>Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件，帮助您快速构建功能丰富的地图应用。</p><h2 id="组件列表" tabindex="-1">组件列表 <a class="header-anchor" href="#组件列表" aria-label="Permalink to &quot;组件列表&quot;">​</a></h2><table tabindex="0"><thead><tr><th>组件名</th><th>描述</th><th>文档</th></tr></thead><tbody><tr><td><a href="./control-bar.html">ol-styled-control-bar</a></td><td>控件容器，用于布局管理多个控件</td><td><a href="./control-bar.html">查看文档</a></td></tr><tr><td><a href="./zoom-controls.html">ol-styled-zoom-in-control</a></td><td>地图放大控件</td><td><a href="./zoom-controls.html">查看文档</a></td></tr><tr><td><a href="./zoom-controls.html">ol-styled-zoom-out-control</a></td><td>地图缩小控件</td><td><a href="./zoom-controls.html">查看文档</a></td></tr><tr><td><a href="./fullscreen-control.html">ol-styled-full-screen-control</a></td><td>全屏切换控件</td><td><a href="./fullscreen-control.html">查看文档</a></td></tr><tr><td><a href="./measure-controls.html">ol-styled-measure-length-control</a></td><td>长度测量控件</td><td><a href="./measure-controls.html">查看文档</a></td></tr><tr><td><a href="./measure-controls.html">ol-styled-measure-area-control</a></td><td>面积测量控件</td><td><a href="./measure-controls.html">查看文档</a></td></tr><tr><td><a href="./clear-control.html">ol-styled-clear-control</a></td><td>清除控件</td><td><a href="./clear-control.html">查看文档</a></td></tr><tr><td><a href="./sidebar-control.html">ol-styled-sidebar-control</a></td><td>侧边栏切换控件</td><td><a href="./sidebar-control.html">查看文档</a></td></tr><tr><td><a href="./swipe-control.html">ol-styled-swipe-control</a></td><td>卷帘对比控件</td><td><a href="./swipe-control.html">查看文档</a></td></tr><tr><td><a href="./base-layer-switcher.html">ol-styled-base-layer-switcher</a></td><td>底图切换控件</td><td><a href="./base-layer-switcher.html">查看文档</a></td></tr></tbody></table><h2 id="使用示例" tabindex="-1">使用示例 <a class="header-anchor" href="#使用示例" aria-label="Permalink to &quot;使用示例&quot;">​</a></h2><h3 id="基本组合" tabindex="-1">基本组合 <a class="header-anchor" href="#基本组合" aria-label="Permalink to &quot;基本组合&quot;">​</a></h3><p>``vue</p>',7)),e("template",null,[o(r,null,{default:s(()=>[o(l,{ref:"view",center:[120,40],zoom:8,projection:"EPSG:4326"},null,512),t[0]||(t[0]=e("pre",null,[e("code",null,`<base-layer />
+
+<!-- 控件栏组合 -->
+<ol-styled-control-bar>
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+</ol-styled-control-bar>
+`)],-1))]),_:1})]),t[3]||(t[3]=d(" ``` ",-1)),t[4]||(t[4]=e("h3",{id:"完整功能组合",tabindex:"-1"},[d("完整功能组合 "),e("a",{class:"header-anchor",href:"#完整功能组合","aria-label":'Permalink to "完整功能组合"'},"​")],-1)),t[5]||(t[5]=e("p",null,"``vue",-1)),e("template",null,[o(r,null,{default:s(()=>[o(l,{ref:"view",center:[120,40],zoom:8,projection:"EPSG:4326"},null,512),t[1]||(t[1]=e("pre",null,[e("code",null,`<base-layer />
+
+<!-- 完整控件组合 -->
+<ol-styled-control-bar>
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+  <ol-styled-full-screen-control />
+  <ol-styled-measure-length-control />
+  <ol-styled-measure-area-control />
+  <ol-styled-clear-control />
+  <ol-styled-sidebar-control />
+</ol-styled-control-bar>
+`)],-1))]),_:1})]),t[6]||(t[6]=n(' ``` <h2 id="主题定制" tabindex="-1">主题定制 <a class="header-anchor" href="#主题定制" aria-label="Permalink to &quot;主题定制&quot;">​</a></h2><p>所有控件都支持多种主题和样式定制，请参考<a href="./../guide/theming.html">主题定制</a>指南了解更多详情。</p><h2 id="国际化" tabindex="-1">国际化 <a class="header-anchor" href="#国际化" aria-label="Permalink to &quot;国际化&quot;">​</a></h2><p>控件支持国际化，请参考<a href="./../guide/i18n.html">国际化</a>指南了解如何配置多语言支持。</p>',5))])}const T=h(i,[["render",u]]);export{P as __pageData,T as default};
