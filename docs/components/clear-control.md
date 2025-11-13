@@ -6,7 +6,7 @@
 
 ```vue
 <template>
-  <OlStyledClearControl />
+  <ol-styled-clear-control />
 </template>
 ```
 
@@ -23,11 +23,11 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledMeasureLengthControl />
-    <OlStyledMeasureAreaControl />
-    <OlStyledClearControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-measure-length-control />
+    <ol-styled-measure-area-control />
+    <ol-styled-clear-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -35,7 +35,7 @@
 
 ```vue
 <template>
-  <OlStyledClearControl @clear="handleClear" />
+  <ol-styled-clear-control @clear="handleClear" />
 </template>
 
 <script setup>

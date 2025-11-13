@@ -66,7 +66,7 @@ app.mount("#app");
     />
     <ol-styled-control-bar>
       <ol-styled-zoom-in-control />
-      <ol-styledZoomOutControl />
+      <ol-styled-zoom-out-control />
       <ol-styled-measure-length-control />
       <ol-styled-measure-area-control />
       <ol-styled-clear-control />

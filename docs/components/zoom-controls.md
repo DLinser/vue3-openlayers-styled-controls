@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-  <OlStyledZoomInControl />
+  <ol-styled-zoom-in-control />
 </template>
 ```
 
@@ -25,7 +25,7 @@
 
 ```vue
 <template>
-  <OlStyledZoomOutControl />
+  <ol-styled-zoom-out-control />
 </template>
 ```
 
@@ -42,10 +42,10 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledZoomInControl />
-    <OlStyledZoomOutControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-zoom-in-control />
+    <ol-styled-zoom-out-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -55,12 +55,12 @@
 
 ```vue
 <template>
-  <OlStyledZoomInControl>
+  <ol-styled-zoom-in-control>
     <PlusIcon />
-  </OlStyledZoomInControl>
+  </ol-styled-zoom-in-control>
   
-  <OlStyledZoomOutControl>
+  <ol-styled-zoom-out-control>
     <MinusIcon />
-  </OlStyledZoomOutControl>
+  </ol-styled-zoom-out-control>
 </template>
 ```

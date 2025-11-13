@@ -6,10 +6,10 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledZoomInControl />
-    <OlStyledZoomOutControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-zoom-in-control />
+    <ol-styled-zoom-out-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -38,30 +38,30 @@
 
 ```vue
 <!-- 左上角 -->
-<OlStyledControlBar position="top-left">
-  <OlStyledZoomInControl />
-  <OlStyledZoomOutControl />
-</OlStyledControlBar>
+<ol-styled-control-bar position="top-left">
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+</ol-styled-control-bar>
 
 <!-- 右上角 -->
-<OlStyledControlBar position="top-right">
-  <OlStyledZoomInControl />
-  <OlStyledZoomOutControl />
-</OlStyledControlBar>
+<ol-styled-control-bar position="top-right">
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+</ol-styled-control-bar>
 ```
 
 ### 不同主题
 
 ```vue
 <!-- 深色主题 -->
-<OlStyledControlBar theme="dark">
-  <OlStyledZoomInControl />
-  <OlStyledZoomOutControl />
-</OlStyledControlBar>
+<ol-styled-control-bar theme="dark">
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+</ol-styled-control-bar>
 
 <!-- 海洋主题 -->
-<OlStyledControlBar theme="ocean">
-  <OlStyledZoomInControl />
-  <OlStyledZoomOutControl />
-</OlStyledControlBar>
+<ol-styled-control-bar theme="ocean">
+  <ol-styled-zoom-in-control />
+  <ol-styled-zoom-out-control />
+</ol-styled-control-bar>
 ```

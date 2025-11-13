@@ -2,9 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Vue3 OpenLayers Styled Controls",
-  description: "一套基于 Vue 3 和 OpenLayers 的可定制样式地图控件库",
-  base: "/vue3-openlayers-styled-controls/",
+  title: 'Vue3 OpenLayers Styled Controls',
+  description: '一套基于 Vue 3 和 OpenLayers 的可定制样式地图控件库',
+  base: '/vue3-openlayers-styled-controls/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -30,14 +30,15 @@ export default defineConfig({
           { text: '缩放控件', link: '/components/zoom-controls' },
           { text: '全屏控件', link: '/components/fullscreen-control' },
           { text: '测量控件', link: '/components/measure-controls' },
-          { text: '侧边栏控件', link: '/components/sidebar-control' },
-          { text: '清除控件', link: '/components/clear-control' }
+          { text: '清除控件', link: '/components/clear-control' },
+          { text: '卷帘控件', link: '/components/swipe-control' },
+          { text: '图层切换控件', link: '/components/base-layer-switcher' }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-username/vue3-openlayers-styled-controls' }
+      { icon: 'github', link: 'https://github.com/DLinser/vue3-openlayers-styled-controls' }
     ],
 
     footer: {

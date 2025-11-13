@@ -15,10 +15,10 @@ Vue3 OpenLayers Styled Controls 支持多种主题和样式定制。
 
 ```vue
 <template>
-  <OlStyledControlBar theme="dark">
-    <OlStyledZoomInControl />
-    <OlStyledZoomOutControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar theme="dark">
+    <ol-styled-zoom-in-control />
+    <ol-styled-zoom-out-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -35,10 +35,10 @@ Vue3 OpenLayers Styled Controls 支持多种主题和样式定制。
 
 ```vue
 <template>
-  <OlStyledControlBar position="top-right">
-    <OlStyledZoomInControl />
-    <OlStyledZoomOutControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar position="top-right">
+    <ol-styled-zoom-in-control />
+    <ol-styled-zoom-out-control />
+  </ol-styled-control-bar>
 </template>
 ```
 

@@ -10,6 +10,10 @@ export default [
   js.configs.recommended,
   prettierConfig,
   {
+    env: {
+      browser: true,
+      es2021: true
+    },
     ignores: [
       'vite.config.ts',
       'eslint.config.js',

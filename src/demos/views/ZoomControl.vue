@@ -2,9 +2,9 @@
   <ol-map class="map-container">
     <ol-view
       ref="view"
-      :center="center"
-      :zoom="zoom"
-      :projection="projection"
+      :center="mapConfig.center"
+      :zoom="mapConfig.zoom"
+      :projection="mapConfig.projection"
     />
 
     <base-layer />
@@ -15,9 +15,6 @@
   </ol-map>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
 import BaseLayer from '../components/base-layer.vue'
-const center = ref([120, 40])
-const projection = ref('EPSG:4326')
-const zoom = ref(8)
+import { mapConfig } from '../config/config.ts'
 </script>

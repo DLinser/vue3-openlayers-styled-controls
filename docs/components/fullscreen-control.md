@@ -6,7 +6,7 @@
 
 ```vue
 <template>
-  <OlStyledFullScreenControl />
+  <ol-styled-full-screen-control />
 </template>
 ```
 
@@ -30,9 +30,9 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledFullScreenControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-full-screen-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -45,9 +45,9 @@
       <!-- 地图内容 -->
     </ol-map>
     
-    <OlStyledControlBar>
-      <OlStyledFullScreenControl :target="mapContainer" />
-    </OlStyledControlBar>
+    <ol-styled-control-bar>
+      <ol-styled-full-screen-control :target="mapContainer" />
+    </ol-styled-control-bar>
   </div>
 </template>
 

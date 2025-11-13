@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-  <OlStyledMeasureLengthControl />
+  <ol-styled-measure-length-control />
 </template>
 ```
 
@@ -34,7 +34,7 @@
 
 ```vue
 <template>
-  <OlStyledMeasureAreaControl />
+  <ol-styled-measure-area-control />
 </template>
 ```
 
@@ -60,11 +60,11 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledMeasureLengthControl />
-    <OlStyledMeasureAreaControl />
-    <OlStyledClearControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-measure-length-control />
+    <ol-styled-measure-area-control />
+    <ol-styled-clear-control />
+  </ol-styled-control-bar>
 </template>
 ```
 
@@ -74,7 +74,7 @@
 
 ```vue
 <template>
-  <OlStyledMeasureLengthControl
+  <ol-styled-measure-length-control
     stroke-color="#ff0000"
     stroke-width="3"
     fill-color="rgba(255, 0, 0, 0.1)"

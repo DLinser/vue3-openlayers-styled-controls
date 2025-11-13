@@ -29,9 +29,9 @@
 
 ```vue
 <template>
-  <OlStyledControlBar>
-    <OlStyledSidebarControl />
-  </OlStyledControlBar>
+  <ol-styled-control-bar>
+    <ol-styled-sidebar-control />
+  </ol-styled-control-bar>
   
   <div v-if="sidebarVisible" class="sidebar">
     <!-- 侧边栏内容 -->
@@ -53,7 +53,7 @@ const handleToggle = (visible) => {
 
 ```vue
 <template>
-  <OlStyledSidebarControl sidebar-id="main-sidebar" />
+  <ol-styled-sidebar-control sidebar-id="main-sidebar" />
   
   <div id="main-sidebar" v-if="sidebarVisible" class="sidebar">
     <!-- 侧边栏内容 -->

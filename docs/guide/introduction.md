@@ -13,14 +13,14 @@ Vue3 OpenLayers Styled Controls 是一套基于 Vue 3 和 OpenLayers 的可定�
 
 ## 支持的控件
 
-- `OlStyledControlBar`: 控件容器，用于水平排列多个控件
-- `OlStyledZoomInControl`: 自定义样式化的放大控件
-- `OlStyledZoomOutControl`: 自定义样式化的缩小控件
-- `OlStyledFullScreenControl`: 全屏切换控件
-- `OlStyledMeasureLengthControl`: 长度测量控件
-- `OlStyledMeasureAreaControl`: 面积测量控件
-- `OlStyledClearControl`: 清除测量结果控件
-- `OlStyledSidebarControl`: 侧边栏切换控件
+- `ol-styled-control-bar`: 控件容器，用于排列多个控件
+- `ol-styled-zoom-in-control`: 自定义样式化的放大控件
+- `ol-styled-zoom-out-control`: 自定义样式化的缩小控件
+- `ol-styled-full-screen-control`: 全屏切换控件
+- `ol-styled-measure-length-control`: 长度测量控件
+- `ol-styled-measure-area-control`: 面积测量控件
+- `ol-styled-clear-control`: 清除测量结果控件
+- `ol-styled-sidebar-control`: 侧边栏切换控件
 
 ## 浏览器支持
 
