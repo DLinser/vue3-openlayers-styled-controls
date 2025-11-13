@@ -4,7 +4,7 @@
       ref="view"
       :center="mapConfig.center"
       :zoom="mapConfig.zoom"
-      :projection="projection"
+      :projection="mapConfig.projection"
     />
 
     <ol-layer-group title="底图切换" ref="baseLayerGroupRef">
@@ -69,9 +69,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { mapConfig } from '../config/config.ts'
-const center = ref([120, 40])
-const projection = ref('EPSG:4326')
-const zoom = ref(8)
 const baseLayerGroupRef = ref<any>(null)
 const baseLayerGroup = computed(() => {
   return baseLayerGroupRef.value?.layerGroup

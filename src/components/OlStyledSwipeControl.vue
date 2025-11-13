@@ -45,7 +45,7 @@ interface Props {
   orientation?: 'horizontal' | 'vertical'
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   leftLayers: () => [],
   rightLayers: () => [],
   position: 0.5,

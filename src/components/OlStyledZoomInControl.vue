@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref } from 'vue'
+import { inject } from 'vue'
 import type Map from 'ol/Map'
 
 // 定义事件发射器

@@ -233,7 +233,9 @@ const stopMeasuring = () => {
 watch(
   () => controlState.value.measureAreaActive,
   active => {
-    if (!active) {
+    if (active) {
+      controlState.value.measureLengthActive = false
+    } else {
       clearMeasuring()
     }
   }

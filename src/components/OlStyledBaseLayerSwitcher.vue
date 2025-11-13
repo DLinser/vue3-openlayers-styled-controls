@@ -369,7 +369,8 @@ onUnmounted(() => {
 
 // 暴露给外部的属性和方法
 defineExpose({
-  switchToLayer
+  switchToLayer,
+  baseLayersConfig
 })
 </script>
 
