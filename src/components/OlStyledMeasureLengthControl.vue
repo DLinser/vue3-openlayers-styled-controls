@@ -93,7 +93,12 @@ import { unByKey } from 'ol/Observable'
 import useControl from '@/composables/useControl'
 
 // 定义事件发射器
-const emit = defineEmits(['click', 'measure-start', 'measure-end'])
+const emit = defineEmits([
+  'click',
+  'measure-start',
+  'measure-end',
+  'geometry-change'
+])
 
 // 从父组件注入地图实例
 const map = inject<Map>('map')
@@ -110,23 +115,25 @@ const tooltipTextHistory = ref<string[]>([])
 const helpTooltipCoord = ref<Coordinate | null>(null)
 const helpTooltipText = ref('')
 
-let geomChangeListener: EventsKey
-let pointerMoveListener: EventsKey
+let geomChangeListener: EventsKey | null
+let pointerMoveListener: EventsKey | null
 const continueLineMsg = '点击继续绘制线'
 
 function drawstart(evt: DrawEvent) {
   if (map) {
     sketch.value = evt.feature
-    const geom = sketch.value.getGeometry()
-    if (geom instanceof LineString) {
+    if (sketch.value.getGeometry()?.getType() == 'LineString') {
+      const geom = sketch.value.getGeometry() as LineString
       tooltipCoord.value = geom.getLastCoordinate()
-
       geomChangeListener = geom.on('change', function (evt) {
         const geom = evt.target
-        if (geom instanceof LineString) {
-          tooltipText.value = formatLength(geom)
-          tooltipCoord.value = geom.getLastCoordinate()
-        }
+        emit('geometry-change', {
+          geom,
+          length: formatLength(geom),
+          coord: geom.getLastCoordinate()
+        })
+        tooltipText.value = formatLength(geom)
+        tooltipCoord.value = geom.getLastCoordinate()
       })
     }
   }
@@ -141,7 +148,9 @@ function drawend() {
   tooltipTextHistory.value.push(tooltipText.value + '')
   tooltipText.value = ''
   // cleanup listeners
-  unByKey(geomChangeListener)
+  if (geomChangeListener) {
+    unByKey(geomChangeListener)
+  }
 }
 
 function showHelpInfoOnPointermove(evt: MapBrowserEvent<any>) {
@@ -203,7 +212,13 @@ const startMeasuring = () => {
 const clearMeasuring = () => {
   tooltipCoordHistory.value = []
   tooltipTextHistory.value = []
-  unByKey(pointerMoveListener)
+  if (pointerMoveListener) {
+    unByKey(pointerMoveListener)
+  }
+  if (geomChangeListener) {
+    unByKey(geomChangeListener)
+    geomChangeListener = null
+  }
 }
 
 /**

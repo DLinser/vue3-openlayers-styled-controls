@@ -124,8 +124,8 @@ const continuePolygonMsg = '点击继续绘制多边形'
 function drawstart(evt: DrawEvent) {
   if (map) {
     sketch.value = evt.feature
-    const geom = sketch.value.getGeometry()
-    if (geom instanceof Polygon) {
+    if (sketch.value.getGeometry()?.getType() == 'Polygon') {
+      const geom = sketch.value.getGeometry() as Polygon
       // 获取多边形的中心点作为tooltip位置
       const extent = geom.getExtent()
       if (extent && extent.length) {
@@ -134,12 +134,10 @@ function drawstart(evt: DrawEvent) {
 
       geomChangeListener = geom.on('change', function (evt) {
         const geom = evt.target
-        if (geom instanceof Polygon) {
-          tooltipText.value = formatArea(geom)
-          // 更新多边形中心点位置
-          const extent = geom.getExtent()
-          tooltipCoord.value = getCenter(extent)
-        }
+        tooltipText.value = formatArea(geom)
+        // 更新多边形中心点位置
+        const extent = geom.getExtent()
+        tooltipCoord.value = getCenter(extent)
       })
     }
   }
@@ -163,7 +161,7 @@ function showHelpInfoOnPointermove(evt: MapBrowserEvent<any>) {
   }
   let helpMsg = '点击开始绘制'
   const geom = sketch.value?.getGeometry()
-  if (geom instanceof Polygon) {
+  if (geom?.getType() == 'Polygon') {
     helpMsg = continuePolygonMsg
   }
 

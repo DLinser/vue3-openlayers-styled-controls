@@ -36,12 +36,25 @@
         @click.stop="switchToLayer(layerConfig)"
       >
         <div class="layer-preview">
-          <img
+          <!-- <img
             v-if="layerConfig.preview"
             :src="layerConfig.preview"
             :alt="layerConfig.title"
             class="preview-image"
-          />
+          /> -->
+          <template v-if="layerConfig.previews && layerConfig.previews.length">
+            <img
+              v-for="(preview, previewIndex) in layerConfig.previews"
+              :key="previewIndex"
+              :src="preview"
+              :alt="layerConfig.title"
+              class="preview-image"
+              :style="{
+                zIndex: previewIndex + 1
+              }"
+            />
+          </template>
+
           <div v-else class="preview-placeholder">无预览</div>
         </div>
       </div>
@@ -53,9 +66,11 @@
 import { inject, onUnmounted, watch, ref } from 'vue'
 import type Map from 'ol/Map'
 import type BaseLayer from 'ol/layer/Base'
+import type { Source as SourceType } from 'ol/source'
 import LayerGroup from 'ol/layer/Group'
 import { getCenter } from 'ol/extent'
 import useControl from '@/composables/useControl'
+import type { Coordinate } from 'ol/coordinate'
 
 // 定义组件属性
 interface Props {
@@ -64,7 +79,7 @@ interface Props {
    * 预览图中心点坐标
    * @default 根据图层坐标系自动计算
    */
-  previewCenter?: [number, number]
+  previewCenter?: Coordinate
   /**
    * 预览图分辨率
    * @default 根据图层坐标系自动计算
@@ -97,7 +112,7 @@ const panelPosition = ref('bottom-right')
 let baseLayers: BaseLayer[] = []
 
 const getBaseLayers = () => {
-  if (props.layerGroup && props.layerGroup instanceof LayerGroup) {
+  if (props.layerGroup && props.layerGroup.getLayers) {
     return props.layerGroup.getLayers().getArray()
   }
 
@@ -107,11 +122,7 @@ const getBaseLayers = () => {
     // 过滤出瓦片图层作为底图
     return layers.filter(layer => {
       // 检查是否为瓦片图层
-      return (
-        layer.constructor.name.includes('Tile') ||
-        ((layer as any).getSource &&
-          (layer as any).getSource()?.constructor.name.includes('Tile'))
-      )
+      return layer.constructor.name.includes('Tile')
     })
   }
   return []
@@ -131,78 +142,54 @@ function getLayerTitle(layer: BaseLayer): string {
  * @param layer 图层对象
  * @returns 预览图URL或null
  */
-function getLayerPreview(layer: BaseLayer): string | null {
+function getLayerPreview(layer: BaseLayer): string[] {
   try {
-    // 处理图层组的情况
-    if (layer instanceof LayerGroup) {
-      const layers = layer.getLayers().getArray()
-      if (layers.length === 0) return null
-
-      // 如果只有一个图层，直接返回该图层的预览
-      if (layers.length === 1) {
-        return getLayerPreview(layers[0]!)
-      }
-
-      // 如果有多个图层，获取所有图层的预览并返回第一个有效的
-      for (const innerLayer of layers) {
-        const preview = getLayerPreview(innerLayer)
-        if (preview) return preview
-      }
-      return null
-    }
-
-    // 检查图层是否有getSource方法（不是所有BaseLayer都有）
-    if (typeof (layer as any).getSource !== 'function') {
-      return null
-    }
-
-    // 获取图层源
-    const source = (layer as any).getSource()
-    if (!source) {
-      return null
-    }
-
     // 优先使用props传入的中心点和分辨率，如果没有则进行计算
-    let center
-    let resolution
+    let center = props.previewCenter
+    let resolution = props.previewResolution
 
-    if (props.previewCenter) {
-      center = props.previewCenter
+    let source: SourceType | null = null
+    if (layer.constructor.name.includes('LayerGroup')) {
+      if ((layer as any).getLayers().getArray().length) {
+        // 只是用于获取中心点和分辨率
+        source = (layer as any).getLayers().getArray()[0].getSource()
+      }
     } else {
+      source = (layer as any).getSource()
+    }
+
+    // 获取中心点
+    if (!center) {
       // 获取中心点
       const defaultExtent = [
         -20037508.342789244, -20037508.342789244, 20037508.342789244,
         20037508.342789244
       ]
-      const sourceProjection = source.getProjection?.()
+
+      const sourceProjection = source?.getProjection?.()
       const projectionExtent = sourceProjection?.getExtent()
       center = projectionExtent
         ? getCenter(projectionExtent)
         : getCenter(defaultExtent)
     }
 
-    if (props.previewResolution !== undefined) {
-      resolution = props.previewResolution
-    } else {
+    // 获取分辨率
+    if (!resolution) {
       // 获取分辨率，考虑不同图层类型的处理
-      if (typeof source.getTileGrid === 'function') {
+      if (typeof (source as any)?.getTileGrid === 'function') {
         // 对于有TileGrid的图层（如TileLayer）
-        const tileGrid = source.getTileGrid()
+        const tileGrid = (source as any).getTileGrid()
         if (tileGrid && typeof tileGrid.getResolution === 'function') {
           resolution = tileGrid.getResolution(0)
         }
-      } else if (typeof source.getResolution === 'function') {
-        // 对于其他有getResolution方法的源
-        resolution = source.getResolution()
       }
-
       // 如果仍未获取到分辨率，基于坐标系范围计算
       if (resolution === undefined) {
-        const sourceProjection = source.getProjection?.()
+        const sourceProjection = source?.getProjection?.()
         const projectionExtent = sourceProjection?.getExtent()
         if (projectionExtent) {
           // 使用坐标系经度总和除以256(tile size)计算分辨率
-          const extentWidth = projectionExtent[2] - projectionExtent[0]
+          const extentWidth = projectionExtent[2]! - projectionExtent[0]!
           resolution = extentWidth / 256
         } else {
           // 回退到默认值
@@ -210,53 +197,38 @@ function getLayerPreview(layer: BaseLayer): string | null {
         }
       }
     }
-
-    // 尝试调用图层的getPreview方法
-    if (typeof (layer as any).getPreview === 'function') {
-      const previews = (layer as any).getPreview(center, resolution)
-      if (Array.isArray(previews) && previews.length > 0) {
-        return previews[0]
+    // 处理图层组的情况
+    if (layer.constructor.name.includes('LayerGroup')) {
+      return (layer as any).getPreview(center, resolution)
+    } else {
+      // 尝试调用图层的getPreview方法
+      if (typeof (layer as any)?.getPreview === 'function') {
+        const previews = (layer as any).getPreview(center, resolution)
+        if (Array.isArray(previews) && previews.length > 0) {
+          return previews
+        } else if (previews) {
+          return [previews]
+        }
       }
-    }
 
-    // 尝试从图层源获取预览图
-    if (typeof source.getPreview === 'function') {
-      const preview = source.getPreview(center, resolution)
-      if (preview) {
-        return preview
+      // 尝试从图层源获取预览图
+      if (typeof (source as any)?.getPreview === 'function') {
+        const preview = (source as any).getPreview(center, resolution)
+        if (preview) {
+          return [preview]
+        }
       }
-    }
-
-    // 如果以上方法都失败，尝试使用图层类型特定的方法
-    // 检查是否为瓦片图层
-    if (
-      layer.constructor.name.includes('Tile') ||
-      source.constructor.name.includes('Tile')
-    ) {
-      // 对于瓦片图层，可能需要特殊的处理
-      console.debug('处理瓦片图层预览:', layer.constructor.name)
-    }
-
-    // 检查是否为矢量图层
-    if (
-      layer.constructor.name.includes('Vector') ||
-      source.constructor.name.includes('Vector')
-    ) {
-      // 对于矢量图层，可能需要渲染一个简化的视图
-      console.debug('处理矢量图层预览:', layer.constructor.name)
     }
   } catch (error) {
     console.warn('获取图层预览失败:', error)
   }
-
-  // 如果所有方法都失败，返回默认预览或null
-  return layer.get('defaultPreview') || null
+  return []
 }
 
 // 图层配置接口
 interface LayerConfig {
   title: string
-  preview: string | null
+  previews: string[]
   active: boolean
 }
 const baseLayersConfig = ref<LayerConfig[]>([])
@@ -270,7 +242,7 @@ const initBaseLayerPanel = () => {
   baseLayersConfig.value = baseLayers.map(layer => {
     return {
       title: getLayerTitle(layer),
-      preview: getLayerPreview(layer),
+      previews: getLayerPreview(layer),
       active: layer.getVisible()
     }
   })
@@ -372,6 +344,8 @@ onUnmounted(() => {
 // 暴露给外部的属性和方法
 defineExpose({
   switchToLayer,
+  baseLayers,
+  getBaseLayers,
   baseLayersConfig
 })
 </script>
@@ -452,6 +426,7 @@ defineExpose({
     .layer-preview {
       width: 54px;
       height: 54px;
+      position: relative;
       border-radius: 4px;
       overflow: hidden;
       flex-shrink: 0;
@@ -460,6 +435,9 @@ defineExpose({
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
 
       .preview-placeholder {

@@ -4,7 +4,7 @@
     "openlayers",
     "vue3-openlayers"
   ],
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Styled controls for Vue3 OpenLayers",
   "type": "module",
   "author": "DLinser",
@@ -41,6 +41,8 @@
     "lint:check": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "link": "npm link",
+    "unlink": "npm unlink",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
