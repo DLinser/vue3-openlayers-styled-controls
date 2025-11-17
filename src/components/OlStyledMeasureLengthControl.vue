@@ -1,6 +1,10 @@
 <template>
   <div
-    :title="controlState.measureLengthActive ? '停止测量' : '测量距离'"
+    :title="
+      controlState.measureLengthActive
+        ? t('measureLength.stop')
+        : t('measureLength.title')
+    "
     :class="[
       'ol-styled-control-item',
       'measure-control',
@@ -91,6 +95,15 @@ import type { Coordinate } from 'ol/coordinate'
 import { getLength } from 'ol/sphere'
 import { unByKey } from 'ol/Observable'
 import useControl from '@/composables/useControl'
+import { globalI18n, defaultI18n } from '@/i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 定义事件发射器
 const emit = defineEmits([
@@ -117,7 +130,7 @@ const helpTooltipText = ref('')
 
 let geomChangeListener: EventsKey | null
 let pointerMoveListener: EventsKey | null
-const continueLineMsg = '点击继续绘制线'
+const continueLineMsg = t('measureLength.continueHelp')
 
 function drawstart(evt: DrawEvent) {
   if (map) {
@@ -157,7 +170,7 @@ function showHelpInfoOnPointermove(evt: MapBrowserEvent<any>) {
   if (evt.dragging) {
     return
   }
-  let helpMsg = '点击开始绘制'
+  let helpMsg = t('measureLength.startHelp')
   const geom = sketch.value?.getGeometry()
   if (geom instanceof LineString) {
     helpMsg = continueLineMsg

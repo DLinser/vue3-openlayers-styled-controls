@@ -1,6 +1,6 @@
 <template>
   <div
-    title="卷帘"
+    :title="t('swipe.title')"
     :class="[
       'ol-styled-control-item',
       'swipe-control',
@@ -36,6 +36,15 @@ import { inject, onUnmounted, watch } from 'vue'
 import type Map from 'ol/Map'
 import type Layer from 'ol/layer/Layer'
 import useControl from '@/composables/useControl'
+import { globalI18n, defaultI18n } from '@/i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 定义组件属性
 interface Props {

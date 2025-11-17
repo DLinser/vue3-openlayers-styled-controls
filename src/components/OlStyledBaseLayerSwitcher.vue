@@ -1,7 +1,7 @@
 <template>
   <div
     ref="controlRef"
-    title="底图切换"
+    :title="t('baseLayerSwitcher.title')"
     :class="[
       'ol-styled-control-item',
       'base-layer-switcher-control',
@@ -55,7 +55,9 @@
             />
           </template>
 
-          <div v-else class="preview-placeholder">无预览</div>
+          <div v-else class="preview-placeholder">
+            {{ t('baseLayerSwitcher.noPreview') }}
+          </div>
         </div>
       </div>
     </div>
@@ -71,6 +73,15 @@ import LayerGroup from 'ol/layer/Group'
 import { getCenter } from 'ol/extent'
 import useControl from '@/composables/useControl'
 import type { Coordinate } from 'ol/coordinate'
+import { globalI18n, defaultI18n } from '@/i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 定义组件属性
 interface Props {
@@ -134,7 +145,11 @@ const getBaseLayers = () => {
  * @returns 图层标题
  */
 function getLayerTitle(layer: BaseLayer): string {
-  return layer.get('title') || layer.get('name') || '未命名图层'
+  return (
+    layer.get('title') ||
+    layer.get('name') ||
+    t('baseLayerSwitcher.unnamedLayer')
+  )
 }
 
 /**

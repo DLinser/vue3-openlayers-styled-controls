@@ -64,3 +64,51 @@
   </ol-styled-zoom-out-control>
 </template>
 ```
+
+## 国际化
+
+缩放控件支持国际化，可以通过配置插件时的 `locale` 和 `messages` 参数来设置显示语言：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+// 配置默认语言为英文
+app.use(OpenLayersControls, {
+  locale: 'en'
+})
+
+app.mount('#app')
+```
+
+您也可以自定义语言资源：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+// 配置自定义语言
+app.use(OpenLayersControls, {
+  locale: 'fr', // 设置默认语言为法语
+  messages: {
+    fr: {
+      zoomIn: {
+        title: 'Zoom avant'
+      },
+      zoomOut: {
+        title: 'Zoom arrière'
+      }
+    }
+  }
+})
+
+app.mount('#app')
+```

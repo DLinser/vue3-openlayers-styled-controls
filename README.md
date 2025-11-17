@@ -24,7 +24,8 @@ Vue3 OpenLayers Styled Controls 是一个专注于为 Web 地图应用提供美�
 - `OlStyledMeasureLengthControl`: 长度测量控件
 - `OlStyledMeasureAreaControl`: 面积测量控件
 - `OlStyledClearControl`: 清除控件
-- `OlStyledSidebarControl`: 侧边栏控件
+- `OlStyledSwipeControl`: 卷帘控件
+- `OlStyledBaseLayerSwitcher`: 底图切换控件
 
 ## 安装
 
@@ -64,6 +65,94 @@ import {
   OlStyledZoomOutControl
 } from 'vue3-openlayers-styled-controls'
 </script>
+```
+
+## 国际化支持
+
+组件库支持国际化，可以轻松适配不同语言环境。
+
+### 默认语言
+
+组件库默认提供以下语言支持：
+
+- 简体中文 (zh-CN)
+- 英文 (en)
+
+### 配置默认语言
+
+您可以在安装插件时配置默认语言：
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+// 配置默认语言为英文
+app.use(OpenLayersControls, {
+  locale: 'en'
+})
+
+app.mount('#app')
+```
+
+### 自定义语言资源
+
+如果您需要自定义语言资源或添加更多语言：
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+// 配置自定义语言
+app.use(OpenLayersControls, {
+  locale: 'fr', // 设置默认语言为法语
+  messages: {
+    fr: {
+      zoomIn: {
+        title: 'Zoom avant'
+      },
+      zoomOut: {
+        title: 'Zoom arrière'
+      },
+      fullScreen: {
+        enter: 'Plein écran',
+        exit: 'Quitter le plein écran'
+      },
+      measureLength: {
+        title: 'Mesurer la distance',
+        stop: 'Arrêter la mesure',
+        startHelp: 'Cliquez pour commencer à dessiner',
+        continueHelp: 'Cliquez pour continuer à dessiner la ligne'
+      },
+      measureArea: {
+        title: 'Mesurer la surface',
+        stop: 'Arrêter la mesure',
+        startHelp: 'Cliquez pour commencer à dessiner',
+        continueHelp: 'Cliquez pour continuer à dessiner le polygone',
+        squareMeters: 'mètres carrés',
+        squareKilometers: 'kilomètres carrés'
+      },
+      clear: {
+        title: 'Effacer'
+      },
+      swipe: {
+        title: 'Balayage'
+      },
+      baseLayerSwitcher: {
+        title: 'Changer de fond de carte',
+        noPreview: 'Pas d\'aperçu',
+        unnamedLayer: 'Couche sans nom'
+      }
+    }
+  }
+})
+
+app.mount('#app')
 ```
 
 ## 文档

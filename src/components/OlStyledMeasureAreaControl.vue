@@ -1,6 +1,10 @@
 <template>
   <div
-    :title="controlState.measureAreaActive ? '停止测量' : '测量面积'"
+    :title="
+      controlState.measureAreaActive
+        ? t('measureArea.stop')
+        : t('measureArea.title')
+    "
     :class="[
       'ol-styled-control-item',
       'measure-area-control',
@@ -98,6 +102,15 @@ import { getArea } from 'ol/sphere'
 import { unByKey } from 'ol/Observable'
 import { getCenter } from 'ol/extent'
 import useControl from '@/composables/useControl'
+import { globalI18n, defaultI18n } from '@/i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 使用组合函数
 const { controlState } = useControl()
@@ -119,7 +132,7 @@ const helpTooltipText = ref('')
 
 let geomChangeListener: EventsKey
 let pointerMoveListener: EventsKey
-const continuePolygonMsg = '点击继续绘制多边形'
+const continuePolygonMsg = t('measureArea.continueHelp')
 
 function drawstart(evt: DrawEvent) {
   if (map) {
@@ -159,7 +172,7 @@ function showHelpInfoOnPointermove(evt: MapBrowserEvent<any>) {
   if (evt.dragging) {
     return
   }
-  let helpMsg = '点击开始绘制'
+  let helpMsg = t('measureArea.startHelp')
   const geom = sketch.value?.getGeometry()
   if (geom?.getType() == 'Polygon') {
     helpMsg = continuePolygonMsg

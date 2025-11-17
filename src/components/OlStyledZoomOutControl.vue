@@ -1,6 +1,6 @@
 <template>
   <div
-    title="缩小"
+    :title="t('zoomOut.title')"
     :class="['ol-styled-control-item', 'zoom-out-control']"
     @click="handleClick"
   >
@@ -21,6 +21,15 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import type Map from 'ol/Map'
+import { globalI18n, defaultI18n } from '../i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 定义事件发射器
 const emit = defineEmits(['click', 'zoom-out'])

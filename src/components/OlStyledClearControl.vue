@@ -1,6 +1,6 @@
 <template>
   <div
-    title="清除"
+    :title="t('clear.title')"
     :class="['ol-styled-control-item', 'clear-control']"
     @click="handleClick"
   >
@@ -24,6 +24,15 @@
 import { inject } from 'vue'
 import type Map from 'ol/Map'
 import useControl from '@/composables/useControl'
+import { globalI18n, defaultI18n } from '@/i18n'
+
+// 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
+const t = (key: string) => {
+  if (globalI18n) {
+    return globalI18n.t(key)
+  }
+  return defaultI18n.t(key)
+}
 
 // 定义事件发射器
 const emit = defineEmits(['click', 'clear'])
