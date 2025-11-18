@@ -45,6 +45,10 @@
         <el-icon><Collection /></el-icon>
         <span>底图切换组件</span>
       </el-menu-item>
+      <el-menu-item index="/demos/plot-control">
+        <el-icon><Edit /></el-icon>
+        <span>标绘组件</span>
+      </el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -61,7 +65,8 @@ import {
   TrendCharts,
   MagicStick,
   CopyDocument,
-  Collection
+  Collection,
+  Edit
 } from '@element-plus/icons-vue'
 
 const route = useRoute()

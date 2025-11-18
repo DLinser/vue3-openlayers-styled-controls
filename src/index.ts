@@ -11,6 +11,7 @@ import OlStyledMeasureAreaControl from './components/OlStyledMeasureAreaControl.
 import OlStyledClearControl from './components/OlStyledClearControl.vue'
 import OlStyledSwipeControl from './components/OlStyledSwipeControl.vue'
 import OlStyledBaseLayerSwitcher from './components/OlStyledBaseLayerSwitcher.vue'
+import OlStyledPlotControl from './components/OlStyledPlotControl.vue'
 
 // 导入 i18n 配置
 import { createI18n, setGlobalI18n } from './i18n'
@@ -31,7 +32,8 @@ export {
   OlStyledMeasureAreaControl,
   OlStyledClearControl,
   OlStyledSwipeControl,
-  OlStyledBaseLayerSwitcher
+  OlStyledBaseLayerSwitcher,
+  OlStyledPlotControl
 }
 
 // 导出 i18n 相关功能
@@ -55,5 +57,6 @@ export default {
     app.component('OlStyledClearControl', OlStyledClearControl)
     app.component('OlStyledSwipeControl', OlStyledSwipeControl)
     app.component('OlStyledBaseLayerSwitcher', OlStyledBaseLayerSwitcher)
+    app.component('OlStyledPlotControl', OlStyledPlotControl)
   }
 }

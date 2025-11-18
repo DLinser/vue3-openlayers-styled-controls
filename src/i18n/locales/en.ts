@@ -48,5 +48,19 @@ export default {
     title: 'Base layer switcher',
     noPreview: 'No preview',
     unnamedLayer: 'Unnamed layer'
+  },
+
+  // PlotControl 组件
+  plotControl: {
+    title: 'Plot',
+    point: 'Point',
+    lineString: 'Line',
+    polygon: 'Polygon',
+    circle: 'Circle',
+    box: 'Box',
+    square: 'Square',
+    straightArrow: 'Straight Arrow',
+    fineArrow: 'Fine Arrow',
+    star: 'Star'
   }
 }

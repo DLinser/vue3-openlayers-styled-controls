@@ -50,6 +50,11 @@ const routes: RouteRecordRaw[] = [
         path: 'base-layer-switcher',
         name: 'base-layer-switcher',
         component: () => import('../demos/views/BaseLayerSwitcher.vue')
+      },
+      {
+        path: 'plot-control',
+        name: 'plot-control',
+        component: () => import('../demos/views/PlotControl.vue')
       }
     ]
   }

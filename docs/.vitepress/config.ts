@@ -32,7 +32,8 @@ export default defineConfig({
           { text: '测量控件', link: '/components/measure-controls' },
           { text: '清除控件', link: '/components/clear-control' },
           { text: '卷帘控件', link: '/components/swipe-control' },
-          { text: '图层切换控件', link: '/components/base-layer-switcher' }
+          { text: '图层切换控件', link: '/components/base-layer-switcher' },
+          { text: '标绘控件', link: '/components/plot-control' }
         ]
       }
     ],

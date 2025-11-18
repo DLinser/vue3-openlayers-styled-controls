@@ -11,6 +11,7 @@
   --styled-control-item-active-bg-color: #eeeeee;
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: rgba(255, 255, 255, 0.8);
+  --styled-control-plot-panel-bg-color: rgba(255, 255, 255, 0.8);
 }
 
 // 深色主题变量
@@ -26,6 +27,7 @@
   --styled-control-item-active-bg-color: #1d1d1d;
   --styled-control-disabled-opacity: 0.4;
   --styled-control-base-layer-switch-bg-color: rgba(45, 45, 45, 0.8);
+  --styled-control-plot-panel-bg-color: rgba(45, 45, 45, 0.8);
 }
 
 // 海洋蓝主题变量
@@ -41,6 +43,7 @@
   --styled-control-item-active-bg-color: #083a5a;
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: rgba(0, 25, 41, 0.8);
+  --styled-control-plot-panel-bg-color: rgba(0, 25, 41, 0.8);
 }
 
 .glassmorphism-theme {
@@ -55,4 +58,5 @@
   --styled-control-item-active-bg-color: #33cccc1a;
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: #0009;
+  --styled-control-plot-panel-bg-color: #0009;
 }
