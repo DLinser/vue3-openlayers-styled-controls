@@ -6,15 +6,26 @@
   --styled-control-text-color: #4e5969;
   --styled-control-item-bg-color: transparent;
   --styled-control-item-border-color: transparent;
-  --styled-control-item-hover-bg-color: #f5f5f5;
+  /* hover/active 使用与图标色调一致的低不透明覆盖，视觉更统一且更柔和 */
+  --styled-control-item-hover-bg-color: rgba(
+    47,
+    75,
+    89,
+    0.06
+  ); /* 基于 --styled-control-icon-color (#2f4b59) 的浅覆盖 */
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #dddddd;
-  --styled-control-item-active-bg-color: #eeeeee;
+  --styled-control-item-active-bg-color: rgba(
+    47,
+    75,
+    89,
+    0.12
+  ); /* 更明显的按下/激活状态 */
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: rgba(255, 255, 255, 0.8);
   --styled-control-plot-panel-bg-color: rgba(255, 255, 255, 0.8);
-  /* 图标主题色与填充色 */
-  --styled-control-icon-color: #ffcc33;
-  --styled-control-icon-fill-color: rgba(255, 204, 51, 0.2);
+  /* 图标主题色与填充色（已调整为更高对比且稳重的默认色） */
+  --styled-control-icon-color: #2f4b59; /* 稍深于文本，便于浅底背景下识别 */
+  --styled-control-icon-fill-color: rgba(47, 75, 89, 0.12);
 }
 
 // 深色主题变量
@@ -25,14 +36,15 @@
   --styled-control-text-color: #ffffff;
   --styled-control-item-bg-color: transparent;
   --styled-control-item-border-color: transparent;
-  --styled-control-item-hover-bg-color: #3d3d3d;
+  /* 暗色主题：使用低不透明的亮色覆盖以与深色背景协调并保持触控反馈 */
+  --styled-control-item-hover-bg-color: rgba(255, 255, 255, 0.16);
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #444444;
-  --styled-control-item-active-bg-color: #1d1d1d;
+  --styled-control-item-active-bg-color: rgba(255, 255, 255, 0.22);
   --styled-control-disabled-opacity: 0.4;
   --styled-control-base-layer-switch-bg-color: rgba(45, 45, 45, 0.8);
   --styled-control-plot-panel-bg-color: rgba(45, 45, 45, 0.8);
-  --styled-control-icon-color: #ffcc33;
-  --styled-control-icon-fill-color: rgba(255, 204, 51, 0.2);
+  --styled-control-icon-color: #ffffff; /* 在暗色背景上保持纯白以获得最佳可读性 */
+  --styled-control-icon-fill-color: rgba(255, 255, 255, 0.08);
 }
 
 // 海洋蓝主题变量
@@ -43,14 +55,20 @@
   --styled-control-text-color: #94d8ff;
   --styled-control-item-bg-color: transparent;
   --styled-control-item-border-color: transparent;
-  --styled-control-item-hover-bg-color: #083a5a;
+  /* 海洋主题：使用主题主色作为低不透明覆盖，保留海洋气质但更柔和 */
+  --styled-control-item-hover-bg-color: rgba(
+    64,
+    158,
+    255,
+    0.08
+  ); /* 基于 #409eff */
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #0994ff;
-  --styled-control-item-active-bg-color: #083a5a;
+  --styled-control-item-active-bg-color: rgba(64, 158, 255, 0.16);
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: rgba(0, 25, 41, 0.8);
   --styled-control-plot-panel-bg-color: rgba(0, 25, 41, 0.8);
-  --styled-control-icon-color: #94d8ff;
-  --styled-control-icon-fill-color: rgba(148, 216, 255, 0.2);
+  --styled-control-icon-color: #94d8ff; /* 与海洋主题主色一致，保持轻盈感 */
+  --styled-control-icon-fill-color: rgba(148, 216, 255, 0.12);
 }
 
 .glassmorphism-theme {
@@ -60,12 +78,23 @@
   --styled-control-text-color: #fff;
   --styled-control-item-bg-color: #0009;
   --styled-control-item-border-color: rgba(122, 163, 204, 0.5);
-  --styled-control-item-hover-bg-color: rgba(0, 0, 0, 0.8);
+  /* glassmorphism：基于 #0009（即 rgba(0,0,0,0.6)）做更细微的深度变化，避免亮色遮罩影响内部文字 */
+  --styled-control-item-hover-bg-color: rgba(
+    0,
+    0,
+    0,
+    0.75
+  ); /* 比基色略深，差别非常细微 */
   --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px transparent;
-  --styled-control-item-active-bg-color: #33cccc1a;
+  --styled-control-item-active-bg-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* 激活态稍微更明显，但仍保持通透 */
   --styled-control-disabled-opacity: 0.5;
   --styled-control-base-layer-switch-bg-color: #0009;
   --styled-control-plot-panel-bg-color: #0009;
   --styled-control-icon-color: #ffffff;
-  --styled-control-icon-fill-color: rgba(255, 255, 255, 0.2);
+  --styled-control-icon-fill-color: rgba(255, 255, 255, 0.12);
 }

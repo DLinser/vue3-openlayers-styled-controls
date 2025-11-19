@@ -31,13 +31,7 @@
           @click.stop="selectPlotType(plotType.type)"
         >
           <div class="plot-type-icon" :title="plotType.label">
-            <div :class="plotType.icon" class="plot-type-icon-content">
-              <!-- 为FineArrow添加装饰元素 -->
-              <div
-                v-if="plotType.type === 'FineArrow'"
-                class="decoration-bar"
-              ></div>
-            </div>
+            <div :class="plotType.icon" class="plot-type-icon-content"></div>
           </div>
         </div>
       </div>
@@ -632,7 +626,7 @@ defineExpose({
             top: 50%;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
@@ -665,7 +659,7 @@ defineExpose({
         }
 
         .CircleIcon {
-          border: 2px solid var(--styled-control-icon-color);
+          border: 1px solid var(--styled-control-icon-color);
           border-radius: 50%;
           background-color: var(--styled-control-icon-fill-color);
         }
@@ -673,7 +667,7 @@ defineExpose({
         .BoxIcon {
           width: 20px;
           height: 14px;
-          border: 2px solid var(--styled-control-icon-color);
+          border: 1px solid var(--styled-control-icon-color);
           background-color: var(--styled-control-icon-fill-color);
           margin: 3px 0;
         }
@@ -681,7 +675,7 @@ defineExpose({
         .SquareIcon {
           width: 18px;
           height: 18px;
-          border: 2px solid var(--styled-control-icon-color);
+          border: 1px solid var(--styled-control-icon-color);
           background-color: var(--styled-control-icon-fill-color);
           margin: 1px 1px;
         }
@@ -723,7 +717,7 @@ defineExpose({
             top: 50%;
             left: 10%;
             right: 0;
-            height: 2px;
+            height: 1px;
             background-color: var(--styled-control-icon-color);
             border-radius: 1px;
             transform: translateY(-50%);
@@ -737,8 +731,8 @@ defineExpose({
             right: 8%;
             width: 8px;
             height: 8px;
-            border-right: 2px solid var(--styled-control-icon-color);
-            border-top: 2px solid var(--styled-control-icon-color);
+            border-right: 1px solid var(--styled-control-icon-color);
+            border-top: 1px solid var(--styled-control-icon-color);
             transform: translateY(-50%) rotate(45deg);
           }
         }
@@ -753,7 +747,7 @@ defineExpose({
             top: 50%;
             left: 2px;
             right: 6px;
-            height: 2px;
+            height: 4px;
             background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
@@ -778,17 +772,6 @@ defineExpose({
             left: 6px;
             width: 4px;
             height: 4px;
-            background-color: var(--styled-control-icon-color);
-            transform: translateY(-50%);
-          }
-
-          /* 在HTML中添加装饰元素 */
-          .decoration-bar {
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            width: 6px;
-            height: 3px;
             background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }

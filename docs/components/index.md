@@ -12,8 +12,8 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 | [ol-styled-full-screen-control](./fullscreen-control) | 全屏切换控件 | [查看文档](./fullscreen-control) |
 | [ol-styled-measure-length-control](./measure-controls) | 长度测量控件 | [查看文档](./measure-controls) |
 | [ol-styled-measure-area-control](./measure-controls) | 面积测量控件 | [查看文档](./measure-controls) |
+| [ol-styled-plot-control](./plot-control) | 标绘控件 | [查看文档](./plot-control) |
 | [ol-styled-clear-control](./clear-control) | 清除控件 | [查看文档](./clear-control) |
-| [ol-styled-sidebar-control](./sidebar-control) | 侧边栏切换控件 | [查看文档](./sidebar-control) |
 | [ol-styled-swipe-control](./swipe-control) | 卷帘对比控件 | [查看文档](./swipe-control) |
 | [ol-styled-base-layer-switcher](./base-layer-switcher) | 底图切换控件 | [查看文档](./base-layer-switcher) |
 
@@ -21,7 +21,7 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 
 ### 基本组合
 
-``vue
+```vue
 <template>
   <ol-map>
     <ol-view
@@ -44,7 +44,7 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 
 ### 完整功能组合
 
-``vue
+```vue
 <template>
   <ol-map>
     <ol-view
@@ -63,8 +63,8 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
       <ol-styled-full-screen-control />
       <ol-styled-measure-length-control />
       <ol-styled-measure-area-control />
+      <ol-styled-plot-control />
       <ol-styled-clear-control />
-      <ol-styled-sidebar-control />
     </ol-styled-control-bar>
   </ol-map>
 </template>

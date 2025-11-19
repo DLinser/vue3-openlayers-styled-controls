@@ -5,6 +5,7 @@
     background-color="#304156"
     text-color="#bfcbd9"
     active-text-color="#409EFF"
+    :default-openeds="['controls']"
     router
   >
     <el-menu-item index="/demos">
@@ -12,7 +13,7 @@
       <span>首页</span>
     </el-menu-item>
 
-    <el-sub-menu index="openlayers">
+    <el-sub-menu index="controls">
       <template #title>
         <el-icon><Location /></el-icon>
         <span>Control 组件</span>

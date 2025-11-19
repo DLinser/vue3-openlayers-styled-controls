@@ -5,15 +5,26 @@
         <el-card class="welcome-card">
           <template #header>
             <div class="card-header">
-              <span>欢迎使用 Vue3-OpenLayers 扩展组件库</span>
+              <span>Vue3 OpenLayers Styled Controls</span>
             </div>
           </template>
           <div class="welcome-content">
             <p>
-              这是一个基于 Vue3 和 OpenLayers
-              的扩展组件库，提供了丰富的地图控制组件。
+              <b>Vue3 OpenLayers Styled Controls</b> 是一套基于 Vue 3 和 OpenLayers 的可定制样式地图控件库，专注于为 Web 地图应用提供美观、响应式、主题化的控制条和工具按钮。
             </p>
-            <p>请从左侧菜单选择要查看的组件演示。</p>
+            <ul>
+              <li>🎨 支持多主题 SCSS 变量，轻松适配不同风格</li>
+              <li>🌍 内置国际化（i18n），支持中英文等多语言</li>
+              <li>📦 轻量级，专注核心地图控件</li>
+              <li>🛠️ TypeScript 全类型支持</li>
+              <li>📱 响应式设计，适配移动端</li>
+            </ul>
+            <p style="margin-top: 8px;">
+              <b>支持控件：</b> 控件栏、缩放、全屏、测量、清除、卷帘、底图切换等。
+            </p>
+            <p style="margin-top: 8px;">
+              👉 请从左侧菜单选择要查看的组件演示，或参考 <a href="https://github.com/DLinser/vue3-openlayers-styled-controls" target="_blank">README</a> 获取用法与文档。
+            </p>
           </div>
         </el-card>
       </el-col>
@@ -23,13 +34,14 @@
       <el-col :span="12">
         <el-card>
           <template #header>
-            <span>组件特性</span>
+            <span>核心特性</span>
           </template>
           <ul>
-            <li>基于 Vue 3 Composition API</li>
-            <li>集成 Element Plus UI 组件</li>
-            <li>支持 TypeScript</li>
-            <li>易于扩展和自定义</li>
+            <li>基于 Vue 3 Composition API &amp; &lt;script setup&gt; 语法</li>
+            <li>可定制主题，支持 SCSS 变量</li>
+            <li>内置国际化，支持多语言</li>
+            <li>TypeScript 类型安全</li>
+            <li>轻量、易扩展</li>
           </ul>
         </el-card>
       </el-col>
@@ -43,12 +55,11 @@
             <li>OpenLayers 10+</li>
             <li>vue3-openlayers 11+</li>
             <li>Element Plus</li>
+            <li>TypeScript / SCSS</li>
           </ul>
         </el-card>
       </el-col>
     </el-row>
-
-    <button class="test-sass-btn">测试 Sass 样式</button>
   </div>
 </template>
 

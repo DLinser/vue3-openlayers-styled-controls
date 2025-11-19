@@ -21,7 +21,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(ElementPlus)
 app.use(OpenLayersMap /*, options */)
 app.use(OpenLayersControls, {
-  locale: 'en'
+  locale: 'zh-CN'
 })
 app.use(router)
 app.mount('#app')
