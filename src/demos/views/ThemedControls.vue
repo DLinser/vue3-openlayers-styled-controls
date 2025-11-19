@@ -30,6 +30,7 @@
         <OlStyledZoomOutControl />
         <OlStyledMeasureLengthControl />
         <OlStyledMeasureAreaControl />
+        <ol-styled-plot-control />
         <OlStyledClearControl />
       </OlStyledControlBar>
 
@@ -38,6 +39,7 @@
         <OlStyledZoomOutControl />
         <OlStyledMeasureLengthControl />
         <OlStyledMeasureAreaControl />
+        <ol-styled-plot-control />
         <OlStyledClearControl />
       </OlStyledControlBar>
 
@@ -46,6 +48,7 @@
         <OlStyledZoomOutControl />
         <OlStyledMeasureLengthControl />
         <OlStyledMeasureAreaControl />
+        <ol-styled-plot-control />
         <OlStyledClearControl />
       </OlStyledControlBar>
 
@@ -54,6 +57,7 @@
         <OlStyledZoomOutControl />
         <OlStyledMeasureLengthControl />
         <OlStyledMeasureAreaControl />
+        <ol-styled-plot-control />
         <OlStyledClearControl />
       </OlStyledControlBar>
     </ol-map>

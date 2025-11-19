@@ -12,7 +12,7 @@ export interface ControlState {
   swipeActive: boolean
   baseLayerSwitcherActive: boolean
   plotActive: boolean
-  sidebarCollapsed: boolean
+  clearPlotLayerTag: boolean
   // 可以添加更多控件状态
 }
 
@@ -23,7 +23,7 @@ const controlState = ref<ControlState>({
   swipeActive: false,
   baseLayerSwitcherActive: false,
   plotActive: false,
-  sidebarCollapsed: false
+  clearPlotLayerTag: false
 })
 
 export default function useControl() {
@@ -36,6 +36,7 @@ export default function useControl() {
     controlState.value.swipeActive = false
     controlState.value.baseLayerSwitcherActive = false
     controlState.value.plotActive = false
+    controlState.value.clearPlotLayerTag = true
   }
 
   return {

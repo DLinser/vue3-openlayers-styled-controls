@@ -20,6 +20,7 @@
       <ol-styled-zoom-in-control />
       <ol-styled-zoom-out-control />
       <ol-styled-plot-control />
+      <ol-styled-clear-control />
     </ol-styled-control-bar>
   </ol-map>
 </template>

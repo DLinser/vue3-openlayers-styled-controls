@@ -31,7 +31,7 @@
           @click.stop="selectPlotType(plotType.type)"
         >
           <div class="plot-type-icon" :title="plotType.label">
-            <div :class="plotType.icon">
+            <div :class="plotType.icon" class="plot-type-icon-content">
               <!-- 为FineArrow添加装饰元素 -->
               <div
                 v-if="plotType.type === 'FineArrow'"
@@ -43,30 +43,38 @@
       </div>
     </div>
     <!-- 标绘图层 -->
-    <ol-vector-layer v-if="drawType">
+    <ol-vector-layer
+      v-if="
+        clearOnClose ? controlState.plotActive : !controlState.clearPlotLayerTag
+      "
+    >
       <ol-source-vector>
         <ol-interaction-draw
+          v-if="drawType"
           :type="getDrawType(drawType)"
           :geometryFunction="getGeometryFunction(drawType)"
           @drawend="onDrawEnd"
           @drawstart="onDrawStart"
         >
           <ol-style>
-            <ol-style-stroke color="#ffcc33" :width="2"></ol-style-stroke>
-            <ol-style-fill color="rgba(255, 204, 51, 0.2)"></ol-style-fill>
+            <ol-style-stroke
+              :color="plotThemeColor"
+              :width="2"
+            ></ol-style-stroke>
+            <ol-style-fill :color="plotFillColor"></ol-style-fill>
             <ol-style-circle :radius="7">
-              <ol-style-fill color="#ffcc33" />
-              <ol-style-stroke color="#ffcc33" :width="2" />
+              <ol-style-fill :color="plotThemeColor" />
+              <ol-style-stroke :color="plotThemeColor" :width="2" />
             </ol-style-circle>
           </ol-style>
         </ol-interaction-draw>
       </ol-source-vector>
 
       <ol-style>
-        <ol-style-stroke color="#ffcc33" :width="2"></ol-style-stroke>
-        <ol-style-fill color="rgba(255, 204, 51, 0.2)"></ol-style-fill>
+        <ol-style-stroke :color="plotThemeColor" :width="2"></ol-style-stroke>
+        <ol-style-fill :color="plotFillColor"></ol-style-fill>
         <ol-style-circle :radius="7">
-          <ol-style-fill color="#ffcc33"></ol-style-fill>
+          <ol-style-fill :color="plotThemeColor"></ol-style-fill>
         </ol-style-circle>
       </ol-style>
     </ol-vector-layer>
@@ -74,13 +82,15 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onUnmounted, watch, ref } from 'vue'
+import { inject, onUnmounted, watch, ref, computed } from 'vue'
 import type Map from 'ol/Map'
 import { DrawEvent } from 'ol/interaction/Draw'
 import { createBox, createRegularPolygon } from 'ol/interaction/Draw'
-import { Circle, LineString, Point, Polygon } from 'ol/geom'
+import { LineString, Polygon } from 'ol/geom'
 import useControl from '@/composables/useControl'
 import { globalI18n, defaultI18n } from '@/i18n'
+import type { Coordinate } from 'ol/coordinate'
+import { ColorHelper } from '@/utils/color'
 
 // 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
 const t = (key: string) => {
@@ -89,17 +99,26 @@ const t = (key: string) => {
   }
   return defaultI18n.t(key)
 }
-
-// 定义组件属性
-interface Props {
-  // 可以添加一些自定义属性
-}
-
-const props = defineProps<Props>()
-
 // 使用组合函数
 const { controlState, closeAllControls } = useControl()
 
+interface Props {
+  // 标绘主颜色
+  plotThemeColor?: string
+  // 是否在关闭控件时清除标绘图层
+  clearOnClose?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  // 标绘主颜色
+  plotThemeColor: '#ffcc33',
+  // 是否在关闭控件时清除标绘图层
+  clearOnClose: false
+})
+
+const plotFillColor = computed(() => {
+  return ColorHelper.setAlpha(props.plotThemeColor, 0.2)
+})
 // 定义事件发射器
 const emit = defineEmits([
   'click',
@@ -151,6 +170,11 @@ const plotTypes = [
     type: 'Square',
     label: t('plotControl.square'),
     icon: 'SquareIcon'
+  },
+  {
+    type: 'Star',
+    label: t('plotControl.star'),
+    icon: 'StarIcon'
   },
   {
     type: 'StraightArrow',
@@ -223,14 +247,6 @@ const createStraightArrowGeometryFunction = () => {
       if (length > 0) {
         // 箭头头部大小
         const headLength = Math.min(length * 0.2, 20)
-        const headWidth = headLength * 0.6
-
-        // 计算箭头主体线（直线）
-        const shaftCoords = [start, end]
-
-        // 计算箭头头部的点
-        // 箭头尖端
-        const headPoint = [end[0], end[1]]
 
         // 箭头两侧点
         const headAngle1 = angle + Math.PI / 6
@@ -261,93 +277,105 @@ const createStraightArrowGeometryFunction = () => {
 
 // 创建FineArrow几何函数 - 继承自Polygon，是一个多边形箭头
 const createFineArrowGeometryFunction = () => {
+  // 参考 generate() 和 getThirdPoint 的实现思路，使用两点生成细箭头
+  const HALF_PI = Math.PI / 2
+
+  const distance = (a: Coordinate, b: Coordinate) => {
+    const dx = b[0]! - a[0]!
+    const dy = b[1]! - a[1]!
+    return Math.sqrt(dx * dx + dy * dy)
+  }
+
+  const getAzimuth = (startPoint: Coordinate, endPoint: Coordinate) => {
+    let azimuth = 0
+    const angle = Math.asin(
+      Math.abs(endPoint[1]! - startPoint[1]!) / distance(startPoint, endPoint)
+    )
+    if (endPoint[1]! >= startPoint[1]! && endPoint[0]! >= startPoint[0]!) {
+      azimuth = angle + Math.PI
+    } else if (
+      endPoint[1]! >= startPoint[1]! &&
+      endPoint[0]! < startPoint[0]!
+    ) {
+      azimuth = Math.PI * 2 - angle
+    } else if (endPoint[1]! < startPoint[1]! && endPoint[0]! < startPoint[0]!) {
+      azimuth = angle
+    } else if (
+      endPoint[1]! < startPoint[1]! &&
+      endPoint[0]! >= startPoint[0]!
+    ) {
+      azimuth = Math.PI - angle
+    }
+    return azimuth
+  }
+
+  const getThirdPoint = (
+    startPnt: Coordinate,
+    endPnt: Coordinate,
+    angle: number,
+    dist: number,
+    clockWise?: boolean
+  ): Coordinate => {
+    const azimuth = getAzimuth(startPnt, endPnt)
+    const alpha = clockWise ? azimuth + angle : azimuth - angle
+    const dx = dist * Math.cos(alpha)
+    const dy = dist * Math.sin(alpha)
+    return [endPnt[0]! + dx, endPnt[1]! + dy]
+  }
+
+  // 参数因子，可根据需要调整以匹配视觉效果
+  const tailWidthFactor = 0.1
+  const neckWidthFactor = 0.2
+  const headWidthFactor = 0.25
+  const neckAngle = Math.PI / 13 // 约 28°
+  const headAngle = Math.PI / 8.5 // 约 42°
+
   return (coordinates: any, geometry: any) => {
-    // FineArrow继承自Polygon，所以我们创建一个多边形几何对象
     if (!geometry) {
       geometry = new Polygon([])
     }
 
-    // 确保有足够的坐标点
+    // 使用第一个点和最后一个点作为尾部与头部参考
     if (coordinates.length >= 2) {
-      const start = coordinates[0]
-      const end = coordinates[1]
+      const pnt1 = coordinates[0]
+      const pnt2 = coordinates[coordinates.length - 1]
 
-      // 计算箭头的基本参数
-      const dx = end[0] - start[0]
-      const dy = end[1] - start[1]
-      const length = Math.sqrt(dx * dx + dy * dy)
-      const angle = Math.atan2(dy, dx)
+      const len = distance(pnt1, pnt2)
+      if (len > 0) {
+        const tailWidth = len * tailWidthFactor
+        const neckWidth = len * neckWidthFactor
+        const headWidth = len * headWidthFactor
 
-      if (length > 0) {
-        // 箭头主体线宽度
-        const shaftWidth = Math.min(2, length / 30)
+        const tailLeft = getThirdPoint(pnt2, pnt1, HALF_PI, tailWidth, true)
+        const tailRight = getThirdPoint(pnt2, pnt1, HALF_PI, tailWidth, false)
+        const headLeft = getThirdPoint(pnt1, pnt2, headAngle, headWidth, false)
+        const headRight = getThirdPoint(pnt1, pnt2, headAngle, headWidth, true)
+        const neckLeft = getThirdPoint(pnt1, pnt2, neckAngle, neckWidth, false)
+        const neckRight = getThirdPoint(pnt1, pnt2, neckAngle, neckWidth, true)
 
-        // 箭头头部大小 - 进一步调小头部尺寸
-        const headLength = Math.min(length * 0.2, 15) // 进一步减小头部长度
-        const headWidth = headLength * 0.3 // 进一步减小头部宽度比例
-
-        // 计算箭头主体线的垂直偏移
-        const shaftOffsetX = (shaftWidth / 2) * Math.cos(angle + Math.PI / 2)
-        const shaftOffsetY = (shaftWidth / 2) * Math.sin(angle + Math.PI / 2)
-
-        // 箭头主体线的起点和终点
-        const shaftStartLeft = [
-          start[0] + shaftOffsetX,
-          start[1] + shaftOffsetY
-        ]
-        const shaftStartRight = [
-          start[0] - shaftOffsetX,
-          start[1] - shaftOffsetY
+        const ring = [
+          tailLeft,
+          neckLeft,
+          headLeft,
+          pnt2,
+          headRight,
+          neckRight,
+          tailRight,
+          tailLeft
         ]
 
-        // 箭头主体线的终点（在箭头头部之前）
-        const shaftEndX = end[0] - headLength * Math.cos(angle)
-        const shaftEndY = end[1] - headLength * Math.sin(angle)
-        const shaftEndLeft = [
-          shaftEndX + shaftOffsetX,
-          shaftEndY + shaftOffsetY
-        ]
-        const shaftEndRight = [
-          shaftEndX - shaftOffsetX,
-          shaftEndY - shaftOffsetY
-        ]
-
-        // 计算箭头头部的点
-        // 箭头尖端
-        const headPoint = [end[0], end[1]]
-
-        // 箭头两侧点
-        const headBaseLeft = [
-          shaftEndX + headWidth * Math.cos(angle + Math.PI / 2),
-          shaftEndY + headWidth * Math.sin(angle + Math.PI / 2)
-        ]
-        const headBaseRight = [
-          shaftEndX + headWidth * Math.cos(angle - Math.PI / 2),
-          shaftEndY + headWidth * Math.sin(angle - Math.PI / 2)
-        ]
-
-        // 创建更美观的FineArrow多边形
-        // 使用单个连续的多边形路径
-        const arrowCoords = [
-          shaftStartLeft, // 主体左起点
-          shaftStartRight, // 主体右起点
-          shaftEndRight, // 主体右终点
-          headBaseRight, // 箭头底部右点
-          headPoint, // 箭头尖端
-          headBaseLeft, // 箭头底部左点
-          shaftEndLeft, // 主体左终点
-          shaftStartLeft // 闭合多边形
-        ]
-
-        geometry.setCoordinates([arrowCoords])
+        geometry.setCoordinates([ring])
       } else {
-        // 如果长度为0，创建一个点
+        // 长度过短时给出一个最小可见形状
+        const x = pnt1[0]
+        const y = pnt1[1]
         geometry.setCoordinates([
           [
-            [start[0], start[1]],
-            [start[0] + 1, start[1] + 1],
-            [start[0] + 1, start[1]],
-            [start[0], start[1]]
+            [x, y],
+            [x + 0.5, y],
+            [x + 0.5, y + 0.5],
+            [x, y + 0.5],
+            [x, y]
           ]
         ])
       }
@@ -473,6 +501,17 @@ watch(
     }
   }
 )
+watch(
+  () => controlState.value.clearPlotLayerTag,
+  newValue => {
+    if (newValue) {
+      // 清除标绘图层
+      setTimeout(() => {
+        controlState.value.clearPlotLayerTag = false
+      }, 100)
+    }
+  }
+)
 
 // 监听窗口大小变化
 window.addEventListener('resize', () => {
@@ -571,17 +610,20 @@ defineExpose({
         align-items: center;
         justify-content: center;
         padding: 2px;
-        /* 标绘类型图标 */
-        .PointIcon {
+        .plot-type-icon-content {
           width: 20px;
           height: 20px;
+          box-sizing: border-box;
+        }
+        /* 标绘类型图标 */
+        .PointIcon {
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
-          background-color: #ffcc33;
+          background-color: var(--styled-control-icon-color);
         }
 
         .LineStringIcon {
-          width: 20px;
-          height: 20px;
           position: relative;
 
           &::before {
@@ -591,7 +633,7 @@ defineExpose({
             left: 0;
             right: 0;
             height: 2px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
 
@@ -602,77 +644,49 @@ defineExpose({
             left: 50%;
             width: 6px;
             height: 6px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             border-radius: 50%;
             transform: translate(-50%, -50%);
           }
         }
 
         .PolygonIcon {
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ffcc33;
-          background-color: rgba(255, 204, 51, 0.2);
-          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          position: relative;
+          background-color: var(--styled-control-icon-color); /* 空心多边形 */
+          /* 更贴近实际不规则多边形形状 */
+          clip-path: polygon(
+            15% 70%,
+            25% 35%,
+            55% 22%,
+            85% 45%,
+            70% 80%,
+            38% 88%
+          );
         }
 
         .CircleIcon {
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ffcc33;
+          border: 2px solid var(--styled-control-icon-color);
           border-radius: 50%;
-          background-color: rgba(255, 204, 51, 0.2);
+          background-color: var(--styled-control-icon-fill-color);
         }
 
         .BoxIcon {
           width: 20px;
           height: 14px;
-          border: 2px solid #ffcc33;
-          background-color: rgba(255, 204, 51, 0.2);
+          border: 2px solid var(--styled-control-icon-color);
+          background-color: var(--styled-control-icon-fill-color);
           margin: 3px 0;
         }
 
         .SquareIcon {
           width: 18px;
           height: 18px;
-          border: 2px solid #ffcc33;
-          background-color: rgba(255, 204, 51, 0.2);
+          border: 2px solid var(--styled-control-icon-color);
+          background-color: var(--styled-control-icon-fill-color);
           margin: 1px 1px;
         }
 
-        .ArrowIcon {
-          width: 20px;
-          height: 20px;
-          position: relative;
-
-          &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 2px;
-            right: 6px;
-            height: 2px;
-            background-color: #ffcc33;
-            transform: translateY(-50%);
-          }
-
-          &::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 2px;
-            width: 0;
-            height: 0;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 8px solid #ffcc33;
-            transform: translateY(-50%);
-          }
-        }
-
         .StarIcon {
-          width: 20px;
-          height: 20px;
           position: relative;
 
           &::before {
@@ -682,7 +696,7 @@ defineExpose({
             left: 50%;
             width: 20px;
             height: 20px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             clip-path: polygon(
               50% 0%,
               61% 35%,
@@ -699,41 +713,38 @@ defineExpose({
           }
         }
 
-        /* StraightArrow图标 - 简单箭头 */
+        /* StraightArrow图标 - 更形象的箭头（加粗箭杆与更宽箭头） */
         .StraightArrowIcon {
-          width: 20px;
-          height: 20px;
           position: relative;
-
           &::before {
+            /* 箭杆 */
             content: '';
             position: absolute;
             top: 50%;
-            left: 2px;
-            right: 6px;
+            left: 10%;
+            right: 0;
             height: 2px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
+            border-radius: 1px;
             transform: translateY(-50%);
           }
 
           &::after {
+            /* 箭头改为开口的“>”形状 */
             content: '';
             position: absolute;
             top: 50%;
-            right: 2px;
-            width: 0;
-            height: 0;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 8px solid #ffcc33;
-            transform: translateY(-50%);
+            right: 8%;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--styled-control-icon-color);
+            border-top: 2px solid var(--styled-control-icon-color);
+            transform: translateY(-50%) rotate(45deg);
           }
         }
 
         /* FineArrow图标 - 精细箭头，添加一个装饰矩形 */
         .FineArrowIcon {
-          width: 20px;
-          height: 20px;
           position: relative;
 
           &::before {
@@ -743,7 +754,7 @@ defineExpose({
             left: 2px;
             right: 6px;
             height: 2px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
 
@@ -756,7 +767,7 @@ defineExpose({
             height: 0;
             border-top: 4px solid transparent;
             border-bottom: 4px solid transparent;
-            border-left: 8px solid #ffcc33;
+            border-left: 8px solid var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
 
@@ -767,7 +778,7 @@ defineExpose({
             left: 6px;
             width: 4px;
             height: 4px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
 
@@ -778,7 +789,7 @@ defineExpose({
             left: 5px;
             width: 6px;
             height: 3px;
-            background-color: #ffcc33;
+            background-color: var(--styled-control-icon-color);
             transform: translateY(-50%);
           }
         }
