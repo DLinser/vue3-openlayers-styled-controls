@@ -35,52 +35,19 @@
 4. 根据类型不同，可能需要点击多个点来完成绘制
 5. 双击或按 ESC 键结束绘制
 
+
+### Props
+
+| 属性名 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| plotThemeColor | `string` | `#ffcc33` | 标绘主题色 |
+| clearOnClose | `boolen` | false | 是否在关闭组件的时候清空图层 |
+
 ## 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | click | 控件被点击时触发 | (event: MouseEvent) |
 | plot-active-change | 标绘状态改变时触发 | (active: boolean) |
-| plot-start | 开始绘制时触发 | { type: string, event: DrawEvent } |
-| plot-end | 结束绘制时触发 | { type: string, event: DrawEvent } |
-
-## 自定义样式
-
-可以通过 CSS 变量来自定义组件样式：
-
-```css
-:root {
-  --styled-control-plot-panel-bg-color: rgba(255, 255, 255, 0.8);
-}
-```
-
-## 国际化
-
-组件支持中英文国际化，默认使用中文。可以通过全局配置修改语言：
-
-```ts
-import { createApp } from 'vue'
-import App from './App.vue'
-import OpenLayersControls, { createI18n } from 'vue3-openlayers-styled-controls'
-
-const app = createApp(App)
-
-// 创建英文国际化实例
-const i18n = createI18n({
-  locale: 'en',
-  messages: {
-    en: {
-      plotControl: {
-        title: 'Plot',
-        point: 'Point',
-        lineString: 'Line',
-        polygon: 'Polygon',
-        circle: 'Circle'
-      }
-    }
-  }
-})
-
-app.use(OpenLayersControls, { i18n })
-app.mount('#app')
-```
+| plot-start | 开始绘制时触发 | `{ type: string, event: DrawEvent }` |
+| plot-end | 结束绘制时触发 | `{ type: string, event: DrawEvent }` |

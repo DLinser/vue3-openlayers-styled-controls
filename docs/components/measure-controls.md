@@ -12,14 +12,6 @@
 </template>
 ```
 
-### Props
-
-| 属性名 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| strokeColor | `string` | `#ffcc33` | 测量线颜色 |
-| strokeWidth | `number` | `2` | 测量线宽度 |
-| fillColor | `string` | `rgba(255, 255, 255, 0.2)` | 测量区域填充颜色 |
-
 ### Events
 
 | 事件名 | 参数 | 说明 |
@@ -38,21 +30,14 @@
 </template>
 ```
 
-### Props
-
-| 属性名 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| strokeColor | `string` | `#ffcc33` | 测量线颜色 |
-| strokeWidth | `number` | `2` | 测量线宽度 |
-| fillColor | `string` | `rgba(255, 255, 255, 0.2)` | 测量区域填充颜色 |
-
 ### Events
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
-| click | `Event` | 点击事件 |
-| measure-start | - | 开始测量时触发 |
-| measure-end | `number` | 测量结束时触发，返回测量结果 |
+| click | Event | 点击事件 |
+| measure-start | DrawEvent | 开始测量时触发 |
+| measure-end | DrawEvent | 测量结束时触发，返回测量结果 |
+| geometry-change | any | 测量结束时触发，返回测量结果 |
 
 ## 组合使用
 
@@ -65,19 +50,5 @@
     <ol-styled-measure-area-control />
     <ol-styled-clear-control />
   </ol-styled-control-bar>
-</template>
-```
-
-## 示例
-
-### 自定义样式
-
-```vue
-<template>
-  <ol-styled-measure-length-control
-    stroke-color="#ff0000"
-    stroke-width="3"
-    fill-color="rgba(255, 0, 0, 0.1)"
-  />
 </template>
 ```

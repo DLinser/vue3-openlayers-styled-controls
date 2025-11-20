@@ -20,18 +20,6 @@
 | position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `bottom-right` | 控件栏位置 |
 | theme | `default` \| `dark` \| `ocean` \| `glassmorphism` | `default` | 控件栏主题 |
 
-## Events
-
-| 事件名 | 参数 | 说明 |
-| --- | --- | --- |
-| mounted | `HTMLElement` | 控件栏挂载完成后触发 |
-
-## Slots
-
-| 插槽名 | 说明 |
-| --- | --- |
-| default | 用于放置控件组件 |
-
 ## 示例
 
 ### 不同位置

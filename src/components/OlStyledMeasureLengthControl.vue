@@ -133,6 +133,7 @@ let pointerMoveListener: EventsKey | null
 const continueLineMsg = t('measureLength.continueHelp')
 
 function drawstart(evt: DrawEvent) {
+  emit('measure-start', evt)
   if (map) {
     sketch.value = evt.feature
     if (sketch.value.getGeometry()?.getType() == 'LineString') {
@@ -152,7 +153,8 @@ function drawstart(evt: DrawEvent) {
   }
 }
 
-function drawend() {
+function drawend(evt: DrawEvent) {
+  emit('measure-start', evt)
   // remove drawn sketch
   sketch.value = null
   // unset tooltip so that a new one can be created

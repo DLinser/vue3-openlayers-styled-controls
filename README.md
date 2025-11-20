@@ -1,10 +1,20 @@
 # Vue3 OpenLayers Styled Controls
 
-一套基于 Vue 3 和 OpenLayers 的可定制样式地图控件库。
+一套基于 vue3-openlayers 的可定制样式地图控件库。
 
 ## 简介
 
 Vue3 OpenLayers Styled Controls 是一个专注于为 Web 地图应用提供美观、响应式控制条和缩放按钮的组件库。它解决了原生 OpenLayers 控件样式单一、难以与现代 UI 框架集成的问题。
+
+## 语言（Languages）
+
+- [English](./README_en.md)
+- [中文](./README.md)
+
+## 部分功能截图
+
+   ![1](./screenshot/default.png)
+   ![2](./screenshot/ocean.png)
 
 ## 特性
 
@@ -164,6 +174,7 @@ app.mount('#app')
 ```bash
 npm run docs:dev
 ```
+或者访问在线文档地址: [文档地址](https://dlinser.github.io/vue3-openlayers-styled-controls/)
 
 ## 开发
 

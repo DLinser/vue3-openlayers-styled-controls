@@ -44,7 +44,7 @@ import 'vue3-openlayers-styled-controls/styles.css'
 const app = createApp(App);
 
 app.use(OpenLayersMap /*, options */);
-app.use(OpenLayersStyledControls)
+app.use(OpenLayersStyledControls /*, options */)
 
 app.mount("#app");
 ```
