@@ -47,6 +47,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../demos/views/SwipeControl.vue')
       },
       {
+        path: 'export-control',
+        name: 'export-control',
+        component: () => import('../demos/views/ExportControl.vue')
+      },
+      {
         path: 'base-layer-switcher',
         name: 'base-layer-switcher',
         component: () => import('../demos/views/BaseLayerSwitcher.vue')

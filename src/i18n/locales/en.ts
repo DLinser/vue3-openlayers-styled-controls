@@ -62,5 +62,10 @@ export default {
     straightArrow: 'Straight Arrow',
     fineArrow: 'Fine Arrow',
     star: 'Star'
+  },
+
+  // ExportMap Control
+  exportMap: {
+    title: 'Export map'
   }
 }

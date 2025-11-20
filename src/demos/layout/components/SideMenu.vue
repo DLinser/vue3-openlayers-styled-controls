@@ -42,6 +42,10 @@
         <el-icon><CopyDocument /></el-icon>
         <span>卷帘组件</span>
       </el-menu-item>
+      <el-menu-item index="/demos/export-control">
+        <el-icon><CopyDocument /></el-icon>
+        <span>导出组件</span>
+      </el-menu-item>
       <el-menu-item index="/demos/base-layer-switcher">
         <el-icon><Collection /></el-icon>
         <span>底图切换组件</span>

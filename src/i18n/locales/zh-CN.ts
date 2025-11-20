@@ -62,5 +62,10 @@ export default {
     straightArrow: '直线箭头',
     fineArrow: '精细箭头',
     star: '星形'
+  },
+
+  // ExportMap 控件
+  exportMap: {
+    title: '导出地图'
   }
 }
