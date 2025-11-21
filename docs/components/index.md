@@ -13,6 +13,7 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 | [ol-styled-measure-length-control](./measure-controls) | 长度测量控件 | [查看文档](./measure-controls) |
 | [ol-styled-measure-area-control](./measure-controls) | 面积测量控件 | [查看文档](./measure-controls) |
 | [ol-styled-plot-control](./plot-control) | 标绘控件 | [查看文档](./plot-control) |
+| [ol-styled-export-map-control](./export-control) | 导出控件 | [查看文档](./export-control) |
 | [ol-styled-clear-control](./clear-control) | 清除控件 | [查看文档](./clear-control) |
 | [ol-styled-swipe-control](./swipe-control) | 卷帘对比控件 | [查看文档](./swipe-control) |
 | [ol-styled-base-layer-switcher](./base-layer-switcher) | 底图切换控件 | [查看文档](./base-layer-switcher) |

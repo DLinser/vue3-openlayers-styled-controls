@@ -95,7 +95,8 @@ export default defineConfig({
               { text: 'Clear Control', link: '/en/components/clear-control' },
               { text: 'Swipe Control', link: '/en/components/swipe-control' },
               { text: 'Base Layer Switcher', link: '/en/components/base-layer-switcher' },
-              { text: 'Plot Control', link: '/en/components/plot-control' }
+              { text: 'Plot Control', link: '/en/components/plot-control' },
+              { text: 'Export Control', link: '/en/components/export-control' }
             ]
           }
         ],

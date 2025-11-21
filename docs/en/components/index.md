@@ -6,14 +6,17 @@ The vue3-openlayers-styled-controls library provides a set of customizable map c
 
 | Component | Description |
 |-----------|-------------|
-| [Control Bar](./control-bar.md) | Container component for organizing other controls |
-| [Zoom Controls](./zoom-controls.md) | Zoom in and zoom out buttons |
-| [Full Screen Control](./fullscreen-control.md) | Toggle full screen mode |
-| [Measure Controls](./measure-controls.md) | Measure distances and areas on the map |
-| [Clear Control](./clear-control.md) | Clear drawings and measurements from the map |
-| [Swipe Control](./swipe-control.md) | Enable layer swiping functionality |
-| [Base Layer Switcher](./base-layer-switcher.md) | Switch between different base map layers |
-| [Plot Control](./plot-control.md) | Draw various shapes on the map |
+| [ol-styled-control-bar](./control-bar.md) | Container component for organizing other controls |
+| [ol-styled-zoom-in-control](./zoom-controls) | Zoom in |
+| [ol-styled-zoom-out-control](./zoom-controls) | zoom out |
+| [ol-styled-full-screen-control](./fullscreen-control) | Toggle full screen mode |
+| [ol-styled-measure-length-control](./measure-controls) | Measure distances |
+| [ol-styled-measure-area-control](./measure-controls) | Measure areas |
+| [ol-styled-plot-control](./plot-control) | Plot |
+| [ol-styled-export-map-control](./export-control) | Export |
+| [ol-styled-clear-control](./clear-control) | Clear drawings and measurements from the map |
+| [ol-styled-swipe-control](./swipe-control) | Enable layer swiping functionality |
+| [ol-styled-base-layer-switcher](./base-layer-switcher) | Switch between different base map layers |
 
 ## Usage
 
