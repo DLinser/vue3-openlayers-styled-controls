@@ -89,6 +89,7 @@ export default defineConfig({
             text: 'Components',
             items: [
               { text: 'Control Bar', link: '/en/components/control-bar' },
+              { text: 'Home Controls', link: '/en/components/home-control' },
               { text: 'Zoom Controls', link: '/en/components/zoom-controls' },
               { text: 'Full Screen Control', link: '/en/components/fullscreen-control' },
               { text: 'Measure Controls', link: '/en/components/measure-controls' },

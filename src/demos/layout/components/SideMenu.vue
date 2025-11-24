@@ -22,6 +22,10 @@
         <el-icon><MessageBox /></el-icon>
         <span>工具条</span>
       </el-menu-item>
+      <el-menu-item index="/demos/home-control">
+        <el-icon><HomeFilled /></el-icon>
+        <span>Home组件</span>
+      </el-menu-item>
       <el-menu-item index="/demos/zoom-control">
         <el-icon><ZoomIn /></el-icon>
         <span>缩放控制组件</span>
@@ -63,6 +67,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   House,
+  HomeFilled,
   Location,
   MessageBox,
   ZoomIn,

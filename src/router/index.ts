@@ -22,6 +22,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../demos/views/ControlBar.vue')
       },
       {
+        path: 'home-control',
+        name: 'home-control',
+        component: () => import('../demos/views/HomeControl.vue')
+      },
+      {
         path: 'zoom-control',
         name: 'zoom-control',
         component: () => import('../demos/views/ZoomControl.vue')

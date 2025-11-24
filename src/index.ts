@@ -13,6 +13,7 @@ import OlStyledSwipeControl from './components/OlStyledSwipeControl.vue'
 import OlStyledBaseLayerSwitcher from './components/OlStyledBaseLayerSwitcher.vue'
 import OlStyledPlotControl from './components/OlStyledPlotControl.vue'
 import OlStyledExportMapControl from './components/OlStyledExportMapControl.vue'
+import OlStyledHomeControl from './components/OlStyledHomeControl.vue'
 
 // 导入 i18n 配置
 import { createI18n, setGlobalI18n } from './i18n'
@@ -35,7 +36,8 @@ export {
   OlStyledSwipeControl,
   OlStyledBaseLayerSwitcher,
   OlStyledPlotControl,
-  OlStyledExportMapControl
+  OlStyledExportMapControl,
+  OlStyledHomeControl
 }
 
 // 导出 i18n 相关功能
@@ -61,5 +63,6 @@ export default {
     app.component('OlStyledBaseLayerSwitcher', OlStyledBaseLayerSwitcher)
     app.component('OlStyledPlotControl', OlStyledPlotControl)
     app.component('OlStyledExportMapControl', OlStyledExportMapControl)
+    app.component('OlStyledHomeControl', OlStyledHomeControl)
   }
 }

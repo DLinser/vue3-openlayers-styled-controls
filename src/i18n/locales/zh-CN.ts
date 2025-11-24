@@ -67,5 +67,10 @@ export default {
   // ExportMap 控件
   exportMap: {
     title: '导出地图'
+  },
+
+  // Home 组件
+  home: {
+    title: '复位'
   }
 }

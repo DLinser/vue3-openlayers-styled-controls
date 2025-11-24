@@ -67,5 +67,10 @@ export default {
   // ExportMap Control
   exportMap: {
     title: 'Export map'
+  },
+
+  // Home Control
+  home: {
+    title: 'Home'
   }
 }

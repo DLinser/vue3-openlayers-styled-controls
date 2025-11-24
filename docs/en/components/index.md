@@ -7,6 +7,7 @@ The vue3-openlayers-styled-controls library provides a set of customizable map c
 | Component | Description |
 |-----------|-------------|
 | [ol-styled-control-bar](./control-bar.md) | Container component for organizing other controls |
+| [ol-styled-home-control](./home-control) | Home |
 | [ol-styled-zoom-in-control](./zoom-controls) | Zoom in |
 | [ol-styled-zoom-out-control](./zoom-controls) | zoom out |
 | [ol-styled-full-screen-control](./fullscreen-control) | Toggle full screen mode |

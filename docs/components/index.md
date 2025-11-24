@@ -7,6 +7,7 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 | 组件名 | 描述 | 文档 |
 | --- | --- | --- |
 | [ol-styled-control-bar](./control-bar) | 控件容器，用于布局管理多个控件 | [查看文档](./control-bar) |
+| [ol-styled-home-control](./home-control) | Home控件 | [查看文档](./home-control) |
 | [ol-styled-zoom-in-control](./zoom-controls) | 地图放大控件 | [查看文档](./zoom-controls) |
 | [ol-styled-zoom-out-control](./zoom-controls) | 地图缩小控件 | [查看文档](./zoom-controls) |
 | [ol-styled-full-screen-control](./fullscreen-control) | 全屏切换控件 | [查看文档](./fullscreen-control) |
