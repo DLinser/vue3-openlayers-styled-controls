@@ -47,7 +47,7 @@
         <span>卷帘组件</span>
       </el-menu-item>
       <el-menu-item index="/demos/export-control">
-        <el-icon><CopyDocument /></el-icon>
+        <el-icon><Upload /></el-icon>
         <span>导出组件</span>
       </el-menu-item>
       <el-menu-item index="/demos/base-layer-switcher">
@@ -75,6 +75,7 @@ import {
   TrendCharts,
   MagicStick,
   CopyDocument,
+  Upload,
   Collection,
   Edit
 } from '@element-plus/icons-vue'

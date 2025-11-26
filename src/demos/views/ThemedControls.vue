@@ -26,39 +26,47 @@
 
       <!-- 不同主题的控件条示例 -->
       <OlStyledControlBar :theme="selectedTheme" position="top-left">
-        <OlStyledZoomInControl />
-        <OlStyledZoomOutControl />
-        <OlStyledMeasureLengthControl />
-        <OlStyledMeasureAreaControl />
+        <ol-styled-home-control />
+        <ol-styled-zoom-in-control />
+        <ol-styled-zoom-out-control />
+        <ol-styled-measure-length-control />
+        <ol-styled-measure-area-control />
         <ol-styled-plot-control />
-        <OlStyledClearControl />
+        <ol-styled-export-map-control />
+        <ol-styled-clear-control />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="top-right">
-        <OlStyledZoomInControl />
-        <OlStyledZoomOutControl />
-        <OlStyledMeasureLengthControl />
-        <OlStyledMeasureAreaControl />
+        <ol-styled-home-control />
+        <ol-styled-zoom-in-control />
+        <ol-styled-zoom-out-control />
+        <ol-styled-measure-length-control />
+        <ol-styled-measure-area-control />
         <ol-styled-plot-control />
-        <OlStyledClearControl />
+        <ol-styled-export-map-control />
+        <ol-styled-clear-control />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="bottom-left">
-        <OlStyledZoomInControl />
-        <OlStyledZoomOutControl />
-        <OlStyledMeasureLengthControl />
-        <OlStyledMeasureAreaControl />
+        <ol-styled-home-control />
+        <ol-styled-zoom-in-control />
+        <ol-styled-zoom-out-control />
+        <ol-styled-measure-length-control />
+        <ol-styled-measure-area-control />
         <ol-styled-plot-control />
-        <OlStyledClearControl />
+        <ol-styled-export-map-control />
+        <ol-styled-clear-control />
       </OlStyledControlBar>
 
       <OlStyledControlBar :theme="selectedTheme" position="bottom-right">
-        <OlStyledZoomInControl />
-        <OlStyledZoomOutControl />
-        <OlStyledMeasureLengthControl />
-        <OlStyledMeasureAreaControl />
+        <ol-styled-home-control />
+        <ol-styled-zoom-in-control />
+        <ol-styled-zoom-out-control />
+        <ol-styled-measure-length-control />
+        <ol-styled-measure-area-control />
         <ol-styled-plot-control />
-        <OlStyledClearControl />
+        <ol-styled-export-map-control />
+        <ol-styled-clear-control />
       </OlStyledControlBar>
     </ol-map>
   </div>

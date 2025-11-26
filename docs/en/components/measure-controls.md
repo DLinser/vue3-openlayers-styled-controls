@@ -45,3 +45,48 @@ Measure Controls provide tools for measuring distances and areas on the map. The
   </ol-map>
 </template>
 ```
+
+## Slot
+
+You can customize the control icon via the default slot:
+
+```vue
+<template>
+  <ol-styled-measure-length-control>
+    <template #default>
+      <i class="custom-measure-length-icon"></i>
+    </template>
+  </ol-styled-measure-length-control>
+
+  <ol-styled-measure-area-control>
+    <template #default>
+      <i class="custom-measure-area-icon"></i>
+    </template>
+  </ol-styled-measure-area-control>
+</template>
+```
+
+## Internationalization
+
+Configure `locale` and `messages` when installing the plugin to localize texts:
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      measureLength: { title: 'Measure distance' },
+      measureArea: { title: 'Measure area' }
+    }
+  }
+})
+
+app.mount('#app')
+```

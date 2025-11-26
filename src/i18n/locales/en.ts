@@ -72,5 +72,13 @@ export default {
   // Home Control
   home: {
     title: 'Home'
+  },
+
+  // TextLabel Control
+  textLabel: {
+    title: 'Text label',
+    inputPrompt: 'Enter label text',
+    confirm: 'OK',
+    cancel: 'Cancel'
   }
 }

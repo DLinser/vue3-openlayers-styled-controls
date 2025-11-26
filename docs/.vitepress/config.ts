@@ -37,7 +37,9 @@ export default defineConfig({
               { text: '清除控件', link: '/components/clear-control' },
               { text: '卷帘控件', link: '/components/swipe-control' },
               { text: '图层切换控件', link: '/components/base-layer-switcher' },
-              { text: '标绘控件', link: '/components/plot-control' }
+              { text: '标绘控件', link: '/components/plot-control' },
+              { text: '文本标注控件', link: '/components/text-label-control' },
+              { text: '导出控件', link: '/components/export-control' }
             ]
           }
         ],

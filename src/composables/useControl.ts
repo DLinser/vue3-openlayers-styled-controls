@@ -13,6 +13,7 @@ export interface ControlState {
   baseLayerSwitcherActive: boolean
   plotActive: boolean
   clearPlotLayerTag: boolean
+  textLabelActive: boolean
   // 可以添加更多控件状态
 }
 
@@ -23,7 +24,8 @@ const controlState = ref<ControlState>({
   swipeActive: false,
   baseLayerSwitcherActive: false,
   plotActive: false,
-  clearPlotLayerTag: false
+  clearPlotLayerTag: false,
+  textLabelActive: false
 })
 
 export default function useControl() {
@@ -36,13 +38,21 @@ export default function useControl() {
     controlState.value.swipeActive = false
     controlState.value.baseLayerSwitcherActive = false
     controlState.value.plotActive = false
+    controlState.value.textLabelActive = false
+  }
+
+  /**
+   * @description: 清空标绘图层
+   */
+  const clearPlotLayer = () => {
     controlState.value.clearPlotLayerTag = true
   }
 
   return {
     map,
     controlState,
-    closeAllControls
+    closeAllControls,
+    clearPlotLayer
   }
 }
 

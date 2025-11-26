@@ -35,6 +35,18 @@
 </template>
 ```
 
+## Slot
+
+You can customize the control icon via the default slot:
+
+```vue
+<ol-styled-home-control>
+  <template #default>
+    <i class="custom-home-icon"></i>
+  </template>
+</ol-styled-home-control>
+```
+
 ## Notes
 - The control automatically records the initial extent after the map's first render.
 - If the map is not initialized with a view/extent, the control will calculate the current extent on first click.

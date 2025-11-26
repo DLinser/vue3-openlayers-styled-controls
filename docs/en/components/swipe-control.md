@@ -62,3 +62,41 @@ const compareLayer = ref(null)
 const baseLayer = ref(null)
 </script>
 ```
+
+## Slot
+
+You can customize the control icon via the default slot:
+
+```vue
+<template>
+  <ol-styled-swipe-control>
+    <template #default>
+      <i class="custom-swipe-icon"></i>
+    </template>
+  </ol-styled-swipe-control>
+</template>
+```
+
+## Internationalization
+
+Configure `locale` and `messages` when installing the plugin to localize texts:
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      swipe: { title: 'Swipe' }
+    }
+  }
+})
+
+app.mount('#app')
+```

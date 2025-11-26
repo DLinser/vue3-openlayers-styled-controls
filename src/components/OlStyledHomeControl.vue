@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { inject, ref, onMounted } from 'vue'
 import type Map from 'ol/Map'
-import { globalI18n, defaultI18n } from '../i18n'
+import { globalI18n, defaultI18n } from '@/i18n'
 
 const t = (key: string) => {
   if (globalI18n) {

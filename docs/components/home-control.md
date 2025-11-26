@@ -8,13 +8,13 @@
 - 支持自定义按钮图标、提示文本。
 - 适配多主题样式。
 
-## 属性（Props）
+## 属性 (Props)
 | 属性名    | 类型        | 默认值    | 说明                         |
 |-----------|-------------|-----------|------------------------------|
 | extent    | [number, number, number, number] \| undefined | -         | 指定回到的范围（OpenLayers extent 格式），不传则为初始范围 |
 | duration| number      | 800 | 地图 fit 动画参数           |
 
-## 事件（Emits）
+## 事件 (Events)
 | 事件名    | 说明                         |
 |-----------|------------------------------|
 | click     | 点击按钮时触发                |
@@ -33,6 +33,18 @@
     <ol-styled-home-control :extent="[0,0,100,100]" />
   </ol-styled-control-bar>
 </template>
+```
+
+## 插槽（Slot）
+
+可以通过默认插槽自定义控件图标：
+
+```vue
+<ol-styled-home-control>
+  <template #default>
+    <i class="custom-home-icon"></i>
+  </template>
+</ol-styled-home-control>
 ```
 
 ## 注意事项

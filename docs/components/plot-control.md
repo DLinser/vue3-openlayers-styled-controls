@@ -36,7 +36,7 @@
 5. 双击或按 ESC 键结束绘制
 
 
-### Props
+## 属性 (Props)
 
 | 属性名 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -51,3 +51,41 @@
 | plot-active-change | 标绘状态改变时触发 | (active: boolean) |
 | plot-start | 开始绘制时触发 | `{ type: string, event: DrawEvent }` |
 | plot-end | 结束绘制时触发 | `{ type: string, event: DrawEvent }` |
+
+## 插槽（Slot）
+
+可以通过默认插槽自定义控件图标：
+
+```vue
+<template>
+  <ol-styled-plot-control>
+    <template #default>
+      <i class="custom-plot-icon"></i>
+    </template>
+  </ol-styled-plot-control>
+</template>
+```
+
+## 国际化
+
+标绘控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      plotControl: { title: 'Plot' }
+    }
+  }
+})
+
+app.mount('#app')
+```

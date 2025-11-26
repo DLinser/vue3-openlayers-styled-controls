@@ -12,7 +12,7 @@
 </template>
 ```
 
-### Events
+## 事件 (Events)
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
@@ -30,7 +30,7 @@
 </template>
 ```
 
-### Events
+## 事件 (Events)
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
@@ -51,4 +51,49 @@
     <ol-styled-clear-control />
   </ol-styled-control-bar>
 </template>
+```
+
+## 插槽（Slot）
+
+可以通过默认插槽为测量控件自定义图标：
+
+```vue
+<template>
+  <ol-styled-measure-length-control>
+    <template #default>
+      <i class="custom-measure-length-icon"></i>
+    </template>
+  </ol-styled-measure-length-control>
+  
+  <ol-styled-measure-area-control>
+    <template #default>
+      <i class="custom-measure-area-icon"></i>
+    </template>
+  </ol-styled-measure-area-control>
+</template>
+```
+
+## 国际化
+
+测量控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      measureLength: { title: 'Measure distance' },
+      measureArea: { title: 'Measure area' }
+    }
+  }
+})
+
+app.mount('#app')
 ```

@@ -39,17 +39,35 @@
 ## 组合使用
 
 通常缩放控件会与控件栏一起使用：
+<ClientOnly>
+  <ol-map style="width: 100%; height: 320px; position: relative">
+    <ol-view :center="[0, 0]" :zoom="2" />
+    <ol-tile-layer>
+      <ol-source-osm />
+    </ol-tile-layer>
+    <ol-styled-control-bar>
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
+    </ol-styled-control-bar>
+  </ol-map>
+</ClientOnly>
 
 ```vue
 <template>
-  <ol-styled-control-bar>
-    <ol-styled-zoom-in-control />
-    <ol-styled-zoom-out-control />
-  </ol-styled-control-bar>
+  <ol-map style="width: 100%; height: 320px; position: relative">
+    <ol-view :center="[0, 0]" :zoom="2" />
+    <ol-tile-layer>
+      <ol-source-osm />
+    </ol-tile-layer>
+    <ol-styled-control-bar>
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
+    </ol-styled-control-bar>
+  </ol-map>
 </template>
 ```
 
-## 自定义图标
+## 插槽（Slot）
 
 您可以通过插槽自定义图标：
 

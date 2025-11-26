@@ -13,6 +13,7 @@ The vue3-openlayers-styled-controls library provides a set of customizable map c
 | [ol-styled-full-screen-control](./fullscreen-control) | Toggle full screen mode |
 | [ol-styled-measure-length-control](./measure-controls) | Measure distances |
 | [ol-styled-measure-area-control](./measure-controls) | Measure areas |
+| [ol-styled-text-label-control](./text-label-control) | Add text labels to the map |
 | [ol-styled-plot-control](./plot-control) | Plot |
 | [ol-styled-export-map-control](./export-control) | Export |
 | [ol-styled-clear-control](./clear-control) | Clear drawings and measurements from the map |

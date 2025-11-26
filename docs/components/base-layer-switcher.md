@@ -36,7 +36,7 @@
 </template>
 ```
 
-## Props
+## 属性 (Props)
 
 | 属性名 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -44,7 +44,7 @@
 | previewCenter | [number, number] | undefined | 预览图的中心点坐标，如果不指定则自动计算 |
 | previewResolution | number | undefined | 预览图的分辨率，如果不指定则自动计算 |
 
-## Events
+## 事件 (Events)
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
@@ -52,7 +52,7 @@
 | base-layer-switcher-active-change | boolean | 底图切换控件激活状态改变时触发 |
 | layer-switched | string | 底图切换完成时触发，参数为切换到的图层名称 |
 
-## 插槽
+## 插槽（Slot）
 
 底图切换组件支持默认插槽，可用于自定义控件图标：
 
@@ -62,6 +62,30 @@
     <i class="custom-base-layer-icon"></i>
   </template>
 </ol-styled-base-layer-switcher>
+```
+
+## 国际化
+
+底图切换控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      baseLayerSwitcher: { title: 'Base layer switcher' }
+    }
+  }
+})
+
+app.mount('#app')
 ```
 
 ## 使用示例

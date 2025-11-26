@@ -41,7 +41,7 @@ const emit = defineEmits(['click', 'clear'])
 const map = inject<Map>('map')
 
 // 使用组合函数
-const { closeAllControls } = useControl()
+const { closeAllControls, clearPlotLayer } = useControl()
 
 const handleClick = (event: unknown) => {
   // 发射点击事件
@@ -50,6 +50,7 @@ const handleClick = (event: unknown) => {
   if (map) {
     // 关闭所有控件
     closeAllControls()
+    clearPlotLayer()
   } else {
     console.warn('地图实例未找到')
   }

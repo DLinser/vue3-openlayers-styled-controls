@@ -13,6 +13,7 @@ Vue3 OpenLayers Styled Controls 提供了一系列可定制的地图控件组件
 | [ol-styled-full-screen-control](./fullscreen-control) | 全屏切换控件 | [查看文档](./fullscreen-control) |
 | [ol-styled-measure-length-control](./measure-controls) | 长度测量控件 | [查看文档](./measure-controls) |
 | [ol-styled-measure-area-control](./measure-controls) | 面积测量控件 | [查看文档](./measure-controls) |
+| [ol-styled-text-label-control](./text-label-control) | 文本标注控件 | [查看文档](./text-label-control) |
 | [ol-styled-plot-control](./plot-control) | 标绘控件 | [查看文档](./plot-control) |
 | [ol-styled-export-map-control](./export-control) | 导出控件 | [查看文档](./export-control) |
 | [ol-styled-clear-control](./clear-control) | 清除控件 | [查看文档](./clear-control) |

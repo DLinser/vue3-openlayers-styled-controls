@@ -19,7 +19,8 @@ The Export Control provides a screenshot-style export of the map, including rast
 </template>
 ```
 
-### Props
+
+## Props
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -65,4 +66,41 @@ onMounted(() => {
   controlRef.value?.exportMap()
 });
 </script>
+```
+## Slot
+
+You can customize the control icon via the default slot:
+
+```vue
+<template>
+  <ol-styled-export-map-control>
+    <template #default>
+      <i class="custom-export-icon"></i>
+    </template>
+  </ol-styled-export-map-control>
+</template>
+```
+
+## Internationalization
+
+Configure `locale` and `messages` when installing the plugin to localize texts:
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      exportMap: { title: 'Export map' }
+    }
+  }
+})
+
+app.mount('#app')
 ```

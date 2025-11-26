@@ -57,12 +57,15 @@
       </ol-layer-group>
     </ol-layer-group>
     <OlStyledControlBar>
-      <OlStyledZoomInControl />
-      <OlStyledZoomOutControl />
-      <OlStyledMeasureLengthControl />
-      <OlStyledMeasureAreaControl />
-      <OlStyledClearControl />
-      <OlStyledBaseLayerSwitcher :layer-group="baseLayerGroup" />
+      <ol-styled-home-control />
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
+      <ol-styled-measure-length-control />
+      <ol-styled-measure-area-control />
+      <ol-styled-plot-control />
+      <ol-styled-export-map-control />
+      <ol-styled-clear-control />
+      <ol-styled-base-layer-switcher :layer-group="baseLayerGroup" />
     </OlStyledControlBar>
   </ol-map>
 </template>

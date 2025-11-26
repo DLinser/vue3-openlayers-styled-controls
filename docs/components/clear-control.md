@@ -10,7 +10,7 @@
 </template>
 ```
 
-## Events
+## 事件 (Events)
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
@@ -28,6 +28,44 @@
     <ol-styled-clear-control />
   </ol-styled-control-bar>
 </template>
+```
+
+## 插槽（Slot）
+
+可以通过默认插槽自定义控件图标：
+
+```vue
+<template>
+  <ol-styled-clear-control>
+    <template #default>
+      <i class="custom-clear-icon"></i>
+    </template>
+  </ol-styled-clear-control>
+  </template>
+```
+
+## 国际化
+
+清除控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      clear: { title: 'Clear' }
+    }
+  }
+})
+
+app.mount('#app')
 ```
 
 ### 监听清除事件

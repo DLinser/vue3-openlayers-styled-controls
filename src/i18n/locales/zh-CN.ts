@@ -72,5 +72,13 @@ export default {
   // Home 组件
   home: {
     title: '复位'
+  },
+
+  // TextLabel 控件
+  textLabel: {
+    title: '文字标注',
+    inputPrompt: '请输入标注文字',
+    confirm: '确定',
+    cancel: '取消'
   }
 }

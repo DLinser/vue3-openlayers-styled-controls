@@ -77,3 +77,38 @@ import { ref } from 'vue'
 const baseLayerGroup = ref(null)
 </script>
 ```
+## Slot
+
+You can customize the control icon via the default slot:
+
+```vue
+<ol-styled-base-layer-switcher>
+  <template #default>
+    <i class="custom-base-layer-icon"></i>
+  </template>
+</ol-styled-base-layer-switcher>
+```
+
+## Internationalization
+
+Configure `locale` and `messages` when installing the plugin to localize texts:
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      baseLayerSwitcher: { title: 'Base layer switcher' }
+    }
+  }
+})
+
+app.mount('#app')
+```

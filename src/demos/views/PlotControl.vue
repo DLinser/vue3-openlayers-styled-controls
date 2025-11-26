@@ -13,12 +13,10 @@
       :projection="mapConfig.projection"
     />
     <base-layer />
-    <ol-tile-layer>
-      <ol-source-osm />
-    </ol-tile-layer>
     <ol-styled-control-bar>
       <ol-styled-zoom-in-control />
       <ol-styled-zoom-out-control />
+      <ol-styled-text-label-control />
       <ol-styled-plot-control />
       <ol-styled-clear-control />
     </ol-styled-control-bar>

@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import type Map from 'ol/Map'
-import { globalI18n, defaultI18n } from '../i18n'
+import { globalI18n, defaultI18n } from '@/i18n'
 
 // 使用 i18n，优先使用全局配置的 i18n，否则使用默认的
 const t = (key: string) => {

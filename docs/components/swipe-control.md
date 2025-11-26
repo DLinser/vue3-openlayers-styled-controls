@@ -2,7 +2,7 @@
 
 卷帘组件提供了一种直观的方式来比较两个不同的图层或地图视图。用户可以通过拖拽分隔线来动态调整两个图层的显示比例。
 
-## Props
+## 属性 (Props)
 
 | 属性名 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -11,14 +11,14 @@
 | position | number | 0.5 | 分隔线的初始位置（0-1之间） |
 | orientation | 'horizontal' \| 'vertical' | 'vertical' | 卷帘方向 |
 
-## Events
+## 事件 (Events)
 
 | 事件名 | 参数 | 说明 |
 | --- | --- | --- |
 | click | MouseEvent | 控件被点击时触发 |
 | swipe-active-change | boolean | 卷帘控件激活状态改变时触发 |
 
-## 插槽
+## 插槽（Slot）
 
 卷帘组件支持默认插槽，可用于自定义控件图标：
 
@@ -31,6 +31,30 @@
     <i class="custom-swipe-icon"></i>
   </template>
 </ol-styled-swipe-control>
+```
+
+## 国际化
+
+卷帘控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      swipe: { title: 'Swipe' }
+    }
+  }
+})
+
+app.mount('#app')
 ```
 
 ## 使用示例
