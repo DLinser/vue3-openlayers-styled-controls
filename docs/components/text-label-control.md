@@ -2,7 +2,24 @@
 
 用于在地图上添加文本标注：点击控件进入标注模式，点击地图选择位置后弹出输入面板，输入文字并确认后将文字渲染到地图上。
 
-## 基本用法
+## 使用 (Usage)
+
+<ClientOnly>
+  <ol-map style="width: 100%; height: 320px; position: relative">
+    <ol-view :center="[0,0]" :zoom="2" />
+    <ol-tile-layer><ol-source-osm /></ol-tile-layer>
+    <ol-styled-control-bar>
+      <ol-styled-text-label-control
+        :fontSize="14"
+        fillColor="#2f4b59"
+        strokeColor="#ffffff"
+        :strokeWidth="3"
+        :offsetY="-14"
+        @label-add="()=>{}"
+      />
+    </ol-styled-control-bar>
+  </ol-map>
+</ClientOnly>
 
 ```vue
 <template>

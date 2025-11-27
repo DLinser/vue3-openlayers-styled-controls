@@ -4,6 +4,23 @@ Adds text labels on the map: click the control to enter labeling mode, click a l
 
 ## Basic Usage
 
+<ClientOnly>
+  <ol-map style="width: 100%; height: 320px; position: relative">
+    <ol-view :center="[0,0]" :zoom="2" />
+    <ol-tile-layer><ol-source-osm /></ol-tile-layer>
+    <ol-styled-control-bar>
+      <ol-styled-text-label-control
+        :fontSize="14"
+        fillColor="#2f4b59"
+        strokeColor="#ffffff"
+        :strokeWidth="3"
+        :offsetY="-14"
+        @label-add="()=>{}"
+      />
+    </ol-styled-control-bar>
+  </ol-map>
+</ClientOnly>
+
 ```vue
 <template>
   <ol-map class="map-container">

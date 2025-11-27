@@ -2,24 +2,23 @@
 
 The plot control provides an interactive tool that allows users to draw various geometries on the map, including points, lines, polygons and circles.
 
-## Basic Usage
+## Usage
 
-```vue
-<template>
-  <ol-map>
-    <ol-view />
-    <ol-tile-layer>
-      <ol-source-osm />
-    </ol-tile-layer>
-    
-    <ol-styled-control-bar>
-      <ol-styled-plot-control />
-    </ol-styled-control-bar>
-  </ol-map>
-</template>
-```
+<script setup>
+import PlotControl from "@demos/views/PlotControl.vue"
+</script>
 
-## Features
+<ClientOnly>
+  <PlotControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../../src/demos/views/PlotControl.vue
+:::
+
+## OlStyledPlotControl
+
+### Features
 
 - Supports multiple geometry types: Point, LineString, Polygon, Circle
 - Responsive design, adapts to different screen sizes
@@ -27,7 +26,7 @@ The plot control provides an interactive tool that allows users to draw various 
 - Customizable styles and themes
 - Built for Vue 3 and OpenLayers
 
-## How to Use
+### How to Use
 
 1. Click the plot control button to open the geometry type panel.
 2. Choose the geometry type you want to draw.
@@ -42,7 +41,7 @@ The plot control provides an interactive tool that allows users to draw various 
 | plotThemeColor | `string` | `#ffcc33` | Theme color used by the plot control |
 | clearOnClose | `boolean` | `false` | Whether to clear the drawing layer when the control is closed |
 
-## Events
+### Events
 
 | Event | Description | Payload |
 | --- | --- | --- |
@@ -50,6 +49,28 @@ The plot control provides an interactive tool that allows users to draw various 
 | plot-active-change | Emitted when the plot active state changes | (active: boolean) |
 | plot-start | Emitted when drawing starts | `{ type: string, event: DrawEvent }` |
 | plot-end | Emitted when drawing ends | `{ type: string, event: DrawEvent }` |
+
+## OlStyledTextLabelControl
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| font | `string` | 'sans-serif' | Text font |
+| fontSize | `number` | 12 | Text font size |
+| fillColor | `string` | `#2f4b59` | Text fill color |
+| strokeColor | `string` | `#ffffff` | Text stroke color |
+| strokeWidth | `number` | 2 | Text stroke width |
+| offsetX | `number` | 0 | Text horizontal offset |
+| offsetY | `number` | -12 | Text vertical offset |
+| clearOnClose | `boolean` | `false` | Whether to clear the label layer when the control is closed |
+
+### Events
+
+| Event | Description | Payload |
+| --- | --- | --- |
+| click | Emitted when the control is clicked | (event: MouseEvent) |
+| label-add | Emitted when a text label is added | `{ feature: Feature, text: string }` |
 
 ## Slot
 
@@ -62,6 +83,11 @@ You can customize the control icon via the default slot:
       <i class="custom-plot-icon"></i>
     </template>
   </ol-styled-plot-control>
+  <ol-styled-text-label-control>
+    <template #default>
+      <i class="custom-text-label-icon"></i>
+    </template>
+  </ol-styled-text-label-control>
 </template>
 ```
 
@@ -81,7 +107,8 @@ app.use(OpenLayersControls, {
   locale: 'en',
   messages: {
     en: {
-      plotControl: { title: 'Plot' }
+      plotControl: { title: 'Plot' },
+      textLabelControl: { title: 'Text Label' }
     }
   }
 })

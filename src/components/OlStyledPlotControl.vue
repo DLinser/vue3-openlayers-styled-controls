@@ -78,7 +78,7 @@
 <script setup lang="ts">
 import { inject, onUnmounted, watch, ref, computed } from 'vue'
 import type Map from 'ol/Map'
-import { DrawEvent } from 'ol/interaction/Draw'
+import type { DrawEvent } from 'ol/interaction/Draw'
 import { createBox, createRegularPolygon } from 'ol/interaction/Draw'
 import { LineString, Polygon } from 'ol/geom'
 import useControl from '@/composables/useControl'

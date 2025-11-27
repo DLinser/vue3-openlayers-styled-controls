@@ -8,11 +8,11 @@
     />
 
     <base-layer />
-    <OlStyledControlBar>
-      <OlStyledZoomInControl />
-      <OlStyledZoomOutControl />
+    <ol-styled-control-bar>
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
       <OlStyledFullScreenControl />
-    </OlStyledControlBar>
+    </ol-styled-control-bar>
   </ol-map>
 </template>
 <script lang="ts" setup>

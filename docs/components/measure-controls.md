@@ -4,7 +4,7 @@
 
 ## OlStyledMeasureLengthControl 长度测量控件
 
-### 基本使用
+### 使用 (Usage)
 
 ```vue
 <template>
@@ -22,7 +22,7 @@
 
 ## OlStyledMeasureAreaControl 面积测量控件
 
-### 基本使用
+### 使用 (Usage)
 
 ```vue
 <template>
@@ -43,15 +43,17 @@
 
 测量控件通常与其他控件一起使用：
 
-```vue
-<template>
-  <ol-styled-control-bar>
-    <ol-styled-measure-length-control />
-    <ol-styled-measure-area-control />
-    <ol-styled-clear-control />
-  </ol-styled-control-bar>
-</template>
-```
+<script setup>
+import MeasureControl from "@demos/views/MeasureControl.vue"
+</script>
+
+<ClientOnly>
+  <MeasureControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../src/demos/views/MeasureControl.vue
+:::
 
 ## 插槽（Slot）
 

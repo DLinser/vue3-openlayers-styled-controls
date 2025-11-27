@@ -31,6 +31,7 @@ export default defineConfig({
             text: '组件',
             items: [
               { text: '控件栏', link: '/components/control-bar' },
+              { text: 'Home控件', link: '/components/home-control' },
               { text: '缩放控件', link: '/components/zoom-controls' },
               { text: '全屏控件', link: '/components/fullscreen-control' },
               { text: '测量控件', link: '/components/measure-controls' },

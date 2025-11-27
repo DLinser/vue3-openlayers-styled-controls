@@ -8,6 +8,21 @@
 - 支持自定义按钮图标、提示文本。
 - 适配多主题样式。
 
+## 使用 (Usage)
+
+<script setup>
+import HomeControl from "@demos/views/HomeControl.vue"
+</script>
+
+<ClientOnly>
+  <HomeControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../src/demos/views/HomeControl.vue
+:::
+
+
 ## 属性 (Props)
 | 属性名    | 类型        | 默认值    | 说明                         |
 |-----------|-------------|-----------|------------------------------|
@@ -25,15 +40,6 @@
 |-----------|------------------------------|
 | goHome    | 手动触发回到初始位置              |
 
-## 用法示例
-
-```vue
-<template>
-  <ol-styled-control-bar>
-    <ol-styled-home-control :extent="[0,0,100,100]" />
-  </ol-styled-control-bar>
-</template>
-```
 
 ## 插槽（Slot）
 
@@ -53,5 +59,26 @@
 - 需确保控件作为地图子组件或能正确注入 map 实例。
 
 ## 国际化（i18n）
-- 默认按钮文本使用 `home.title` 作为 i18n key，可在 `src/i18n/locales/zh-CN.ts` 和 `en.ts` 中自定义。
+
+卷帘控件支持国际化，通过在安装插件时配置 `locale` 和 `messages`：
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import OpenLayersControls from 'vue3-openlayers-styled-controls'
+
+const app = createApp(App)
+
+app.use(OpenLayersControls, {
+  locale: 'en',
+  messages: {
+    en: {
+      home: { title: 'Home' }
+    }
+  }
+})
+
+app.mount('#app')
+```
 

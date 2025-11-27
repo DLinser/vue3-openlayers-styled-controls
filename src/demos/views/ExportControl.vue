@@ -8,12 +8,12 @@
     />
 
     <base-layer />
-    <OlStyledControlBar>
-      <OlStyledZoomInControl />
-      <OlStyledZoomOutControl />
+    <ol-styled-control-bar>
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
       <ol-styled-plot-control />
-      <OlStyledExportMapControl />
-    </OlStyledControlBar>
+      <ol-styled-export-map-control />
+    </ol-styled-control-bar>
   </ol-map>
 </template>
 <script lang="ts" setup>

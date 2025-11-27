@@ -1,5 +1,5 @@
 import { inject, ref } from 'vue'
-import Map from 'ol/Map'
+import type Map from 'ol/Map'
 
 type ExtentedMap = Map & {
   controls_?: any[]

@@ -2,22 +2,20 @@
 
 用于导出地图（截图式），包括地图上的栅格、矢量等图层。
 
-## 基本用法
+## 使用 (Usage)
 
-```vue
-<template>
-  <ol-map>
-    <ol-view />
-    <ol-tile-layer>
-      <ol-source-osm />
-    </ol-tile-layer>
-    
-    <ol-styled-control-bar>
-      <ol-styled-export-map-control />
-    </ol-styled-control-bar>
-  </ol-map>
-</template>
-```
+<script setup>
+import ExportControl from "@demos/views/ExportControl.vue"
+</script>
+
+<ClientOnly>
+  <ExportControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../src/demos/views/ExportControl.vue
+:::
+
 ## 属性 (Props)
 
 | 属性名 | 类型 | 默认值 | 说明 |

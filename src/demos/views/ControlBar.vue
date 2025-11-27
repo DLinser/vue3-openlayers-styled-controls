@@ -56,7 +56,7 @@
         </ol-tile-layer>
       </ol-layer-group>
     </ol-layer-group>
-    <OlStyledControlBar>
+    <ol-styled-control-bar>
       <ol-styled-home-control />
       <ol-styled-zoom-in-control />
       <ol-styled-zoom-out-control />
@@ -66,7 +66,7 @@
       <ol-styled-export-map-control />
       <ol-styled-clear-control />
       <ol-styled-base-layer-switcher :layer-group="baseLayerGroup" />
-    </OlStyledControlBar>
+    </ol-styled-control-bar>
   </ol-map>
 </template>
 <script lang="ts" setup>

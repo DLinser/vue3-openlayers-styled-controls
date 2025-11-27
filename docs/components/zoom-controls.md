@@ -4,7 +4,7 @@
 
 ## OlStyledZoomInControl 放大控件
 
-### 基本使用
+### 使用 (Usage)
 
 ```vue
 <template>

@@ -19,49 +19,19 @@ The Swipe Control enables layer swiping functionality, allowing users to compare
 | swipe-active-change | boolean | Emitted when swipe mode is active |
 
 
-## Examples
-
-```vue
-<template>
-  <ol-map>
-    <ol-view
-      ref="view"
-      :center="[120, 40]"
-      :zoom="8"
-      :projection="'EPSG:4326'"
-    />
-
-    <!-- 底图图层 -->
-    <ol-tile-layer title="OSM">
-      <ol-source-osm />
-    </ol-tile-layer>
-
-    <!-- 对比图层 -->
-    <ol-tile-layer ref="compareLayer" title="天地图影像">
-      <ol-source-tianditu
-        layerType="img"
-        projection="EPSG:4326"
-        tk="your-token"
-      />
-    </ol-tile-layer>
-
-    <!-- 卷帘控件 -->
-    <ol-styled-control-bar>
-      <ol-styled-swipe-control
-        :left-layers="[compareLayer?.tileLayer]"
-        :right-layers="[baseLayer?.tileLayer]"
-      />
-    </ol-styled-control-bar>
-  </ol-map>
-</template>
+## Usage
 
 <script setup>
-import { ref } from 'vue'
-
-const compareLayer = ref(null)
-const baseLayer = ref(null)
+import SwipeControl from "@demos/views/SwipeControl.vue"
 </script>
-```
+
+<ClientOnly>
+  <SwipeControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../../src/demos/views/SwipeControl.vue
+:::
 
 ## Slot
 

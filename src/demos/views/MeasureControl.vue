@@ -8,13 +8,13 @@
     />
 
     <base-layer />
-    <OlStyledControlBar>
-      <OlStyledZoomInControl />
-      <OlStyledZoomOutControl />
-      <OlStyledMeasureLengthControl />
-      <OlStyledMeasureAreaControl />
-      <OlStyledClearControl />
-    </OlStyledControlBar>
+    <ol-styled-control-bar>
+      <ol-styled-zoom-in-control />
+      <ol-styled-zoom-out-control />
+      <ol-styled-measure-length-control />
+      <ol-styled-measure-area-control />
+      <ol-styled-clear-control />
+    </ol-styled-control-bar>
   </ol-map>
 </template>
 <script lang="ts" setup>

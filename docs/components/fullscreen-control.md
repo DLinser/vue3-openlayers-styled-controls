@@ -2,8 +2,19 @@
 
 全屏控件用于切换地图的全屏显示模式。
 
-## 基本使用
+## 使用 (Usage)
 
+<script setup>
+import FullScreenControl from "@demos/views/FullScreenControl.vue"
+</script>
+
+<ClientOnly>
+  <FullScreenControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../src/demos/views/FullScreenControl.vue
+:::
 ```vue
 <template>
   <ol-styled-full-screen-control />
@@ -17,17 +28,6 @@
 | click | `Event` | 点击事件 |
 | fullscreen-change | - | 进入或退出全屏时触发 |
 
-## 示例
-
-### 基本用法
-
-```vue
-<template>
-  <ol-styled-control-bar>
-    <ol-styled-full-screen-control />
-  </ol-styled-control-bar>
-</template>
-```
 
 ## 插槽（Slot）
 

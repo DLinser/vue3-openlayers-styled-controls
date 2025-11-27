@@ -2,39 +2,19 @@
 
 底图切换组件允许用户在多个底图图层之间进行切换。组件会自动检测地图中的瓦片图层，并为每个图层生成预览图。
 
-## 基本用法
+## 使用 (Usage)
 
-```vue
-<template>
-  <ol-map>
-    <ol-view
-      ref="view"
-      :center="[120, 40]"
-      :zoom="8"
-      :projection="'EPSG:4326'"
-    />
+<script setup>
+import BaseLayerSwitcher from "@demos/views/BaseLayerSwitcher.vue"
+</script>
 
-    <!-- OSM底图 -->
-    <ol-tile-layer title="OSM">
-      <ol-source-osm />
-    </ol-tile-layer>
+<ClientOnly>
+  <BaseLayerSwitcher style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
 
-    <!-- 天地图影像底图 -->
-    <ol-tile-layer title="天地图影像">
-      <ol-source-tianditu
-        layerType="img"
-        projection="EPSG:4326"
-        tk="your-token"
-      />
-    </ol-tile-layer>
-
-    <!-- 底图切换控件 -->
-    <ol-styled-control-bar>
-      <ol-styled-base-layer-switcher />
-    </ol-styled-control-bar>
-  </ol-map>
-</template>
-```
+::: code-group
+<<< ../../src/demos/views/BaseLayerSwitcher.vue
+:::
 
 ## 属性 (Props)
 

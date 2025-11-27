@@ -21,7 +21,7 @@ Zoom Controls provide buttons for zooming in and out on the map. They can be use
 | `zoom-in` | `undefined` | Emitted when zooming in |
 | `zoom-out` | `undefined` | Emitted when zooming out |
 
-## Examples
+## Usage
 
 <ClientOnly>
   <ol-map style="width: 100%; height: 320px; position: relative">

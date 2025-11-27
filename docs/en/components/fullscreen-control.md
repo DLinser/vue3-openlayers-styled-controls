@@ -4,11 +4,17 @@ The Full Screen Control allows users to toggle the map between normal and full s
 
 ## Usage
 
-```vue
-<template>
-  <ol-styled-full-screen-control />
-</template>
-```
+<script setup>
+import FullScreenControl from "@demos/views/FullScreenControl.vue"
+</script>
+
+<ClientOnly>
+  <FullScreenControl style="width: 100%; height: 320px; position: relative" />
+</ClientOnly>
+
+::: code-group
+<<< ../../../src/demos/views/FullScreenControl.vue
+:::
 
 ## Events
 
@@ -16,20 +22,6 @@ The Full Screen Control allows users to toggle the map between normal and full s
 |-------|---------|-------------|
 | click | `Event` | event of click |
 | `fullscreen-change` | `Boolen` | Emitted when entering or exiting full screen mode |
-
-## Examples
-
-### Basic Usage
-
-```vue
-<template>
-  <ol-map>
-    <ol-styled-control-bar>
-      <ol-styled-full-screen-control />
-    </ol-styled-control-bar>
-  </ol-map>
-</template>
-```
 
 ## Slot
 
