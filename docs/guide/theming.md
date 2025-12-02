@@ -10,6 +10,7 @@ Vue3 OpenLayers Styled Controls 支持多种主题和样式定制。
 - `dark`: 深色主题
 - `ocean`: 海洋主题
 - `glassmorphism`: 玻璃拟态主题
+- `purple-dream-theme`: 梦幻紫主题
 
 使用方式：
 

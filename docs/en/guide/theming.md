@@ -11,6 +11,7 @@ The control bar supports the following built-in themes:
 - `dark`: Dark theme
 - `ocean`: Ocean theme
 - `glassmorphism`: Glassmorphism theme
+- `purple-dream-theme`: purple-dream theme
 
 Usage:
 
