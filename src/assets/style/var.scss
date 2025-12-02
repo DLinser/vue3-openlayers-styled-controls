@@ -98,3 +98,27 @@
   --styled-control-icon-color: #ffffff;
   --styled-control-icon-fill-color: rgba(255, 255, 255, 0.12);
 }
+
+// 紫色梦幻主题变量
+.purple-dream-theme {
+  --styled-control-bar-bg-color: rgba(75, 0, 130, 0.8); /* 深紫色背景 */
+  --styled-control-bar-border-color: #9370db; /* 中紫色边框 */
+  --styled-control-bar-box-shadow: 0 2px 4px rgba(147, 112, 219, 0.4);
+  --styled-control-text-color: #e6e6fa; /* 淡紫色文字 */
+  --styled-control-item-bg-color: transparent;
+  --styled-control-item-border-color: transparent;
+  /* 紫色主题：使用主题主色作为低不透明覆盖，保留梦幻气质但更柔和 */
+  --styled-control-item-hover-bg-color: rgba(
+    230,
+    230,
+    250,
+    0.16
+  ); /* 基于淡紫色 #e6e6fa */
+  --styled-control-item-hover-box-shadow: inset 0px 0px 15px 1px #9370db;
+  --styled-control-item-active-bg-color: rgba(230, 230, 250, 0.22);
+  --styled-control-disabled-opacity: 0.5;
+  --styled-control-base-layer-switch-bg-color: rgba(75, 0, 130, 0.8);
+  --styled-control-plot-panel-bg-color: rgba(75, 0, 130, 0.8);
+  --styled-control-icon-color: #e6e6fa; /* 与主题主色一致，保持梦幻感 */
+  --styled-control-icon-fill-color: rgba(230, 230, 250, 0.12);
+}

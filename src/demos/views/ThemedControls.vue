@@ -93,6 +93,10 @@ const themeOptions = [
   {
     value: 'glassmorphism',
     label: '毛玻璃'
+  },
+  {
+    value: 'purple-dream',
+    label: '紫色梦幻'
   }
 ]
 </script>
