@@ -198,6 +198,7 @@ function getLayerPreview(layer: BaseLayer): string[] {
           resolution = tileGrid.getResolution(0)
         }
       }
+      debugger
       // 如果仍未获取到分辨率，基于坐标系范围计算
       if (resolution === undefined) {
         const sourceProjection = source?.getProjection?.()
@@ -399,7 +400,6 @@ defineExpose({
     0px 2px 4px 0px rgba(148, 149, 151, 0.5)
   );
   padding: 12px;
-  min-width: 200px;
   z-index: 1000;
 
   &.bottom-right {
